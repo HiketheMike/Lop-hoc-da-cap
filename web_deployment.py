@@ -47,8 +47,8 @@ if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
 # --- Header Section (Always visible, above sidebar and main content) ---
-st.image("pictures/big_icon.png", width=200) # Changed image source to local file
-st.title("🌿 Ecopure: Where Clean meets Green")
+st.image("pictures/big_icon.png", width=300) # Changed image source to local file
+
 st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
