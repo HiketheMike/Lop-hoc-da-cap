@@ -47,8 +47,8 @@ if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
 # --- Header Section (Always visible, above sidebar and main content) ---
-st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
-st.title("🌿 Ecopure: Where Clean meet Green")
+st.image("Lop-hoc-da-cap/pictures/big_icon.png", width=100) # Changed image source to local file
+st.title("🌿 Ecopure: Where Clean meets Green")
 st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
