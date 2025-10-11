@@ -1,6 +1,6 @@
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-    background-image: url("L-p-h-c--a-c-p/pictures/background.png");
+    background-image: url("pictures/background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
