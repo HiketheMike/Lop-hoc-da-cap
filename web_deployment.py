@@ -59,6 +59,20 @@ st.sidebar.title("Ecopure")
 st.sidebar.markdown("---") # Separator
 
 st.sidebar.header("Navigation")
+# Use st.markdown to create colored boxes around the radio buttons
+st.sidebar.markdown(
+    """
+    <style>
+    [data-testid="stRadio"] {
+        padding: 10px;
+        background-color: #459cc3;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 selected_page = st.sidebar.radio(
     "Go to",
     ["Home", "Products", "Customer Reviews", "Contact Us"],
