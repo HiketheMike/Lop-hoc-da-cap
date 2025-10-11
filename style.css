@@ -1,7 +1,19 @@
+// ...existing code...
 /* Target the Streamlit sidebar */
 [data-testid="stSidebar"] {
     background: linear-gradient(to bottom, #459cc3, #304149) !important;
-    color: #fef8dd !important; /* Set text color for sidebar */
+    color: #fef8dd !important; /* Set general text color for sidebar */
+}
+
+/* Target header/category text within the sidebar */
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4,
+[data-testid="stSidebar"] h5,
+[data-testid="stSidebar"] h6,
+[data-testid="stSidebar"] .st-emotion-cache-10q0tfy { /* This class often targets header-like elements in Streamlit */
+    color: #75c6d3 !important;
 }
 
 /* Target the main app container and all its parent elements */
