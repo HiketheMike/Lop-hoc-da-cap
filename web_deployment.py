@@ -108,7 +108,7 @@ with st.form("comment_form", clear_on_submit=True):
             # `st.experimental_rerun()` forces the app to re-run immediately,
             # which is necessary here to display the newly added comment without
             # requiring another user interaction.
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.warning("Please enter both your name and comment before submitting.")
 
