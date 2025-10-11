@@ -20,7 +20,7 @@ body {
 
 /* Style sidebar headers */
 .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
-    color: #0d47a1; /* Darker blue for sidebar headers */
+    color: #0da11e; /* Darker blue for sidebar headers */
     padding-left: 15px; /* Indent headers slightly */
 }
 
@@ -28,7 +28,7 @@ body {
 .stSidebar .stRadio > label {
     padding: 10px 15px; /* More padding for better click area */
     font-size: 1.1em;
-    color: #1a237e; /* Dark blue for navigation links */
+    color: #1a7e22; /* Dark blue for navigation links */
     transition: background-color 0.2s ease; /* Smooth transition on hover */
     border-radius: 5px; /* Slightly rounded corners */
     margin-bottom: 5px; /* Space between items */
@@ -40,9 +40,9 @@ body {
 
 /* Style sidebar info box */
 .stSidebar .stAlert.info {
-    background-color: #e3f2fd; /* Lighter blue for info box */
-    color: #1a237e;
-    border-left: 5px solid #2196f3;
+    background-color: #f7f7f7; /* Lighter blue for info box */
+    color: #1a7e3a;
+    border-left: 5px solid #21f379;
     margin: 15px; /* Add margin around the info box */
     padding: 10px;
     border-radius: 5px;
