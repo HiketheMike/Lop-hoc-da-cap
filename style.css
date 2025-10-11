@@ -1,3 +1,14 @@
 body {
-    background: linear-gradient(to right, #e0f7fa, #bbdefb); /* Light blue gradient */
+    /* Example gradient: light blue to light purple */
+    background: linear-gradient(to right, #e0f7fa, #bbdefb);
+    /* You can adjust the colors and direction as desired */
+    /* For example:
+    background: linear-gradient(45deg, #f0f9ff, #cbeefd);
+    background: radial-gradient(circle, #e3f2fd, #bbdefb);
+    */
+}
+
+/* You might also want to style the main Streamlit content area */
+.stApp {
+    background: none; /* Ensure the Streamlit app container doesn't override the body background */
 }
