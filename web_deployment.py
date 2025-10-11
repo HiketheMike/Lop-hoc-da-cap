@@ -6,85 +6,12 @@ import os   # Added for path operations
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
 
-# --- Embed custom CSS directly ---
-st.markdown("""
-    <style>
-    body {
-        /* Use the background image instead of a gradient */
-        background-image: url('pictures/background.png');
-        background-size: cover; /* Cover the entire background area */
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
-        background-attachment: fixed; /* Keep the background fixed while scrolling */
-        margin: 0; /* Remove default body margin */
-        padding: 0; /* Remove default body padding */
-    }
+# --- Inject custom CSS for gradient background ---
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-    /* Ensure the main Streamlit app container doesn't override the body background */
-    .stApp {
-        background: none; /* This allows the body background to show through */
-    }
-
-    /* Explicitly ensure the main content block also has no background */
-    [data-testid="stAppViewBlock"] {
-        background: none;
-    }
-
-    /* Style the sidebar with a green gradient */
-    .stSidebar {
-        background: linear-gradient(to bottom, #a5d6a7, #e8f5e9); /* A subtle green gradient for the sidebar */
-        color: #1b5e20; /* Dark green text for better contrast on green sidebar */
-        padding-top: 20px; /* Add some padding at the top */
-        box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-    }
-
-    /* Style sidebar headers */
-    .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
-        color: #004d40; /* Even darker green for sidebar headers */
-        padding-left: 15px; /* Indent headers slightly */
-    }
-
-    /* Style sidebar radio buttons (navigation links) */
-    .stSidebar .stRadio > label {
-        padding: 10px 15px; /* More padding for better click area */
-        font-size: 1.1em;
-        color: #1b5e20; /* Dark green for navigation links */
-        transition: background-color 0.2s ease; /* Smooth transition on hover */
-        border-radius: 5px; /* Slightly rounded corners */
-        margin-bottom: 5px; /* Space between items */
-    }
-
-    .stSidebar .stRadio > label:hover {
-        background-color: rgba(0, 128, 0, 0.08); /* Light green hover effect */
-    }
-
-    /* Style sidebar info box */
-    .stSidebar .stAlert.info {
-        background-color: #e8f5e9; /* Lighter green for info box */
-        color: #1b5e20;
-        border-left: 5px solid #4caf50; /* Medium green border */
-        margin: 15px; /* Add margin around the info box */
-        padding: 10px;
-        border-radius: 5px;
-    }
-
-    /* Style social media icons to ensure visibility on a light green background */
-    .stSidebar img {
-        filter: brightness(30%); /* Make icons darker for better contrast on light green */
-        transition: transform 0.2s ease; /* Smooth scale on hover */
-    }
-
-    .stSidebar img:hover {
-        transform: scale(1.1); /* Slightly enlarge on hover */
-    }
-
-    /* General markdown styling within sidebar for better readability */
-    .stSidebar .stMarkdown {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+local_css("style.css")
 
 # --- Functions to handle comments persistence ---
 def load_comments():
