@@ -1,13 +1,11 @@
 /* Target the main app container and all its parent elements */
+/* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw_-JnDLbgyAdOMYjQpOGJt18MgoiVhSVBow&s");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: linear-gradient(to right, #459cc3, #304149, #75c6d3, #fef8dd) !important;
     margin: 0;
     padding: 0;
 }
+
 
 /* Ensure all Streamlit containers have transparent backgrounds */
 .stApp, [data-testid="stAppViewContainer"], [data-testid="stAppViewBlockContainer"] {
