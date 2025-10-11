@@ -1,3 +1,9 @@
+# ...existing code...
+# <VSCode.Cell id="#VSC-6011bf7c" language="python">
+# import seaborn as sns
+# </VSCode.Cell>
+
+# --- Start of Streamlit App Code ---
 import streamlit as st
 from datetime import datetime
 import json
@@ -34,29 +40,6 @@ st.set_page_config(
     initial_sidebar_state="expanded" # Changed to 'expanded' to show sidebar by default
 )
 
-# --- Custom CSS for Gradient Background and White Sidebar ---
-st.markdown(
-    """
-    <style>
-    /* Eco-friendly gradient background for the main content */
-    body {
-        background: linear-gradient(to right, #e6ffe6, #ccffcc); /* Light green to slightly darker light green */
-    }
-
-    /* White background for the sidebar */
-    [data-testid="stSidebar"] {
-        background-color: white !important;
-    }
-
-    /* Ensure the main content area also respects the background */
-    .stApp {
-        background: transparent; /* Let the body background show through */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # --- Session State for Comments ---
 # Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
@@ -72,11 +55,17 @@ st.markdown("""
 # --- Sidebar Navigation ---
 st.sidebar.header("Navigation")
 
+# The "expand on hover" effect for symbols is not natively supported by Streamlit's radio buttons.
+# We'll use emojis with text labels for clear navigation.
 selected_page = st.sidebar.radio(
     "Go to",
     ["🏠 Home", "🛍️ Products", "🌟 Customer Reviews", "📞 Contact Us"],
     index=0 # Default to Home page
 )
+
+# --- Main Content Area based on Sidebar Selection ---
+# --- Main Content Area based on Sidebar Selection ---
+# ...existing code...
 
 # --- Main Content Area based on Sidebar Selection ---
 if selected_page == "🏠 Home":
@@ -173,34 +162,36 @@ elif selected_page == "🌟 Customer Reviews":
 
     st.markdown("---")
 
-    # Display comments directly (no expander)
-    for comment_data in st.session_state.comments:
+    # Display comments using st.expander
+    for i, comment_data in enumerate(st.session_state.comments):
         rating_stars = "⭐" * comment_data.get('rating', 0)
-        st.markdown(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*")
-        st.info(f"\"{comment_data['comment']}\"")
-        st.markdown("---") # Add a separator between comments for clarity
+        # Use a unique key for each expander
+        with st.expander(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*", expanded=(i==0)): # Expand first comment by default
+            st.info(f"\"{comment_data['comment']}\"")
+        # No need for st.markdown("---") after each expander, as the expander itself provides visual separation
 
     st.subheader("Leave Your Own Comment")
-    # Display the form directly (no expander)
-    with st.form("comment_form", clear_on_submit=True):
-        user_name = st.text_input("Your Name", max_chars=50)
-        user_comment = st.text_area("Your Comment", max_chars=500)
-        user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
-        submitted = st.form_submit_button("Submit Comment")
-        if submitted:
-            if user_name and user_comment:
-                new_comment = {
-                    "name": user_name,
-                    "comment": user_comment,
-                    "date": datetime.now().strftime("%Y-%m-%d"),
-                    "rating": user_rating
-                }
-                st.session_state.comments.append(new_comment)
-                save_comments(st.session_state.comments) # Save comments to file
-                st.success("Thank you for your comment and rating! It has been added to the list.")
-                st.rerun()
-            else:
-                st.warning("Please enter both your name and comment before submitting.")
+    # Wrap the form in an expander to keep the page cleaner
+    with st.expander("Click here to leave a comment and rating"):
+        with st.form("comment_form", clear_on_submit=True):
+            user_name = st.text_input("Your Name", max_chars=50)
+            user_comment = st.text_area("Your Comment", max_chars=500)
+            user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
+            submitted = st.form_submit_button("Submit Comment")
+            if submitted:
+                if user_name and user_comment:
+                    new_comment = {
+                        "name": user_name,
+                        "comment": user_comment,
+                        "date": datetime.now().strftime("%Y-%m-%d"),
+                        "rating": user_rating
+                    }
+                    st.session_state.comments.append(new_comment)
+                    save_comments(st.session_state.comments) # Save comments to file
+                    st.success("Thank you for your comment and rating! It has been added to the list.")
+                    st.rerun()
+                else:
+                    st.warning("Please enter both your name and comment before submitting.")
 
 elif selected_page == "📞 Contact Us":
     st.header("Contact Our Customer Service")
