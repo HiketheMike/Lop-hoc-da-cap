@@ -75,7 +75,7 @@ st.sidebar.markdown(
 )
 selected_page = st.sidebar.radio(
     "Go to",
-    ["Home", "Products", "Customer Reviews", "Contact Us"],
+    ["Home", "About Us", "Products", "Customer Reviews", "Contact Us"], # Added "About Us"
     index=0
 )
 st.sidebar.markdown("---") # Separator
@@ -147,42 +147,107 @@ if selected_page == "Home":
             st.markdown("#### 🌍 Earth-Friendly")
             st.write("Biodegradable formula, safe for the planet.")
 
-elif selected_page == "Products":
-    st.header("Our Products")
-    st.write("Explore our range of eco-friendly cleaning solutions designed for your sustainable lifestyle.")
+elif selected_page == "About Us": # New "About Us" section
+    st.header("About EcoPure: Where Clean Meets Green")
+    st.write("""
+        At EcoPure, we are driven by a mission to foster a healthier planet and a healthier you.
+        We believe in sustainable living, and that starts with the small choices we make every day,
+        like reusing our water bottles. But reusing shouldn't mean compromising on hygiene.
+        """)
 
-    # Using st.container for each product for better visual separation
-    with st.container(border=True): # border=True adds a visual border around the container
-        st.subheader("Ecopure Water Bottle Cleaner - 500ml Bottle")
-        st.image("https://via.placeholder.com/400x400?text=Ecopure+500ml+Bottle", caption="Ecopure 500ml Bottle", width=250)
-        st.metric(label="Price", value="$12.99", delta="-5% Today Only!")
+    st.subheader("The Problem We're Solving")
+    st.markdown("""
+        The growing concern over plastic waste in Vietnam highlights the urgent need for sustainable solutions.
+        While reusable water bottles are a step in the right direction, they come with their own challenges:
+        *   **Bacterial Growth:** Many reusable water bottles harbor high levels of bacteria, often far exceeding safe limits,
+            leading to potential health risks and unpleasant odors.
+        *   **Cleaning Difficulties:** Narrow-mouth designs and intricate crevices make thorough cleaning with manual brushes
+            or hand washing nearly impossible, leaving behind residues and biofilms where microbes thrive.
+        *   **Lack of Public Facilities:** The absence of specialized bottle cleaning equipment in public spaces like schools,
+            offices, and gyms often leads users to skip or rush cleaning, accelerating bacterial growth.
+        *   **User Habits:** A significant portion of users do not rinse their bottles daily, contributing to the hygiene problem.
+        """)
+
+    st.subheader("Our Solution: Innovation for a Cleaner Future")
+    st.markdown("""
+        EcoPure offers an innovative and eco-friendly solution to these challenges:
+        *   **Effective Cleaning:** Our bottle washers utilize water pressure for quick and effective cleaning,
+            ensuring superior hygiene compared to traditional methods.
+        *   **Promoting Reuse:** We empower users to confidently reuse their bottles multiple times a day,
+            knowing they are hygienically clean, thereby supporting sustainable lifestyles and reducing disposable plastic waste.
+        *   **Accessibility & Convenience:** Designed for both individual and shared spaces, EcoPure machines
+            can be installed in homes, offices, gyms, and public areas, making bottle hygiene accessible to everyone.
+        *   **Optional Upgrades:** For environments requiring the highest hygiene standards (e.g., schools, hospitals, cafes),
+            we offer optional drying and sterilization functions.
+        *   **Eco-Friendly Operation:** Our standard models operate without electricity, relying on water pressure or mechanical parts,
+            which reduces equipment and electricity costs, aligning with our green mission.
+        """)
+    st.image("https://via.placeholder.com/700x350?text=EcoPure+Solution+Image", caption="EcoPure: Innovative Bottle Cleaning for a Sustainable Lifestyle", use_container_width=True)
+
+
+elif selected_page == "Products": # Updated "Products" section
+    st.header("Our Products: EcoPure Bottle Washing Machines")
+    st.write("Discover our range of innovative, eco-friendly bottle washing machines designed for various needs and environments.")
+
+    # Product 1: Standard
+    with st.container(border=True):
+        st.subheader("EcoPure Standard")
+        st.image("https://via.placeholder.com/400x400?text=EcoPure+Standard", caption="EcoPure Standard Model", width=250)
+        st.metric(label="Price", value="$359.99 (8 million VND)")
         st.markdown("""
-            Our flagship product! This 500ml bottle provides ample solution for months of sparkling clean
-            bottles. Its concentrated formula means a little goes a long way.
-            *   **Volume:** 500ml
-            *   **Ingredients:** 100% Plant-based, Biodegradable
-            *   **Best for:** Daily cleaning, deep sanitization
+            **Function:** 1 tap, No drying function.
+            **Description:** A single-tap bottle washer, compact and easy to use, without a drying function.
+            **Target Customer:** Ideal for households, small offices, or businesses looking for a simple, cost-effective solution.
             """)
-        if st.button("🛒 Add 500ml Bottle to Cart"):
-            st.success("500ml Bottle added to cart!")
+        if st.button("🛒 Add Standard to Cart"):
+            st.success("EcoPure Standard added to cart!")
 
     st.markdown("---") # Add a separator between products
 
-    with st.container(border=True): # border=True adds a visual border around the container
-        st.subheader("Ecopure Travel-Size Cleaner - 100ml Spray")
-        st.image("https://via.placeholder.com/400x400?text=Ecopure+100ml+Spray", caption="Ecopure 100ml Spray", width=250)
-        st.metric(label="Price", value="$5.99")
+    # Product 2: Standard Air
+    with st.container(border=True):
+        st.subheader("EcoPure Standard Air")
+        st.image("https://via.placeholder.com/400x400?text=EcoPure+Standard+Air", caption="EcoPure Standard Air Model", width=250)
+        st.metric(label="Price", value="$489.99 (12 million VND)")
         st.markdown("""
-            Perfect for on-the-go freshness! This compact spray bottle is ideal for quick cleans
-            when you're traveling or at the gym.
-            *   **Volume:** 100ml
-            *   **Ingredients:** 100% Plant-based, Biodegradable
-            *   **Best for:** Travel, quick refreshes
+            **Function:** 1 tap, Drying Function included.
+            **Description:** A single-tap bottle washer with an added drying function, enabling quick drying after cleaning for faster, more hygienic use.
+            **Target Customer:** Perfect for offices, school cafeterias, cafes, or consumers who need a multi-functional and efficient product.
             """)
-        if st.button("🛒 Add 100ml Spray to Cart"):
-            st.success("100ml Spray added to cart!")
+        if st.button("🛒 Add Standard Air to Cart"):
+            st.success("EcoPure Standard Air added to cart!")
 
-# ...existing code...
+    st.markdown("---") # Add a separator between products
+
+    # Product 3: Double
+    with st.container(border=True):
+        st.subheader("EcoPure Double")
+        st.image("https://via.placeholder.com/400x400?text=EcoPure+Double", caption="EcoPure Double Model", width=250)
+        st.metric(label="Price", value="$439.99 (11 million VND)")
+        st.markdown("""
+            **Function:** 2 taps, No drying function.
+            **Description:** A two-tap bottle washer, ideal for cleaning multiple bottles at once, designed for shared places.
+            **Target Customer:** Suitable for larger organizations, universities, or businesses that need to clean multiple bottles simultaneously.
+            """)
+        if st.button("🛒 Add Double to Cart"):
+            st.success("EcoPure Double added to cart!")
+
+    st.markdown("---") # Add a separator between products
+
+    # Product 4: Double Air
+    with st.container(border=True):
+        st.subheader("EcoPure Double Air")
+        st.image("https://via.placeholder.com/400x400?text=EcoPure+Double+Air", caption="EcoPure Double Air Model", width=250)
+        st.metric(label="Price", value="$589.99 (15 million VND)")
+        st.markdown("""
+            **Function:** 2 taps, Drying Function included.
+            **Description:** A two-tap bottle washer with drying capability, perfect for high-traffic public spaces or businesses.
+            **Target Customer:** Best for large enterprises, public areas like universities, offices, gyms, or cafes that require fast and efficient bottle cleaning for many people.
+            """)
+        if st.button("🛒 Add Double Air to Cart"):
+            st.success("EcoPure Double Air added to cart!")
+
+
 elif selected_page == "Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
@@ -213,7 +278,7 @@ elif selected_page == "Customer Reviews":
 
     st.subheader("Leave Your Own Comment")
     # Wrap the form in a container with a border instead of an expander
-    with st.container(border=False):
+    with st.container(border=True): # Changed border to True for consistency
         with st.form("comment_form", clear_on_submit=True):
             user_name = st.text_input("Your Name")
             user_comment = st.text_area("Your Comment")
@@ -234,24 +299,6 @@ elif selected_page == "Customer Reviews":
                     st.experimental_rerun() # Rerun to show new comment
                 else:
                     st.error("Please fill in your name and comment.")
-
-
-    st.markdown("---")
-    st.subheader("Other Ways to Reach Us")
-
-    st.markdown("""
-        **Email:** info@ecopure.com  
-        **Phone:** +1 (800) 555-0123 (Mon-Fri, 9 AM - 5 PM EST)  
-        **Address:** 123 Green Street, Eco City, EC 12345
-        """)
-
-    st.markdown("---")
-    st.subheader("Follow Us")
-    st.markdown("""
-        [Facebook](https://facebook.com/ecopure) |
-        [Instagram](https://instagram.com/ecopure) |
-        [Twitter](https://twitter.com/ecopure)
-        """)
 
 
 elif selected_page == "Contact Us":
