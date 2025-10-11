@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import datetime
-import json # Added for JSON operations
-import os   # Added for path operations
+import json
+import os
 
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
@@ -38,25 +38,26 @@ st.set_page_config(
     page_title="Ecopure: Green Bottle Cleaner",
     page_icon="🌿",
     layout="centered",
-    initial_sidebar_state="expanded" # Changed to 'expanded' to show sidebar by default
+    initial_sidebar_state="expanded"
 )
 
 # --- Session State for Comments ---
-# Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
 # --- Header Section (Always visible, above sidebar and main content) ---
-st.image("pictures/big_icon.png", width=300) # Changed image source to local file
-
+st.image("pictures/big_icon.png", width=300)
+st.title("🌿 Ecopure: Where Clean Meets Green") # Updated title to reflect combined theme
 st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
 
 # --- Sidebar Content ---
+st.sidebar.image("pictures/big_icon.png", width=80) # Re-added sidebar image
+st.sidebar.title("Ecopure")
+st.sidebar.markdown("---")
 
-st.sidebar.title("Navigation")
-# Use st.markdown to create colored boxes around the radio buttons
+st.sidebar.header("Navigation")
 st.sidebar.markdown(
     """
     <style>
@@ -72,10 +73,10 @@ st.sidebar.markdown(
 )
 selected_page = st.sidebar.radio(
     "Go to",
-    ["Home", "About Us", "Products", "Customer Reviews", "Contact Us"], # Added "About Us"
+    ["About Us", "Products", "Customer Reviews", "Contact Us"], # Removed "Home", kept "About Us"
     index=0
 )
-st.sidebar.markdown("---") 
+st.sidebar.markdown("---")
 
 
 st.sidebar.subheader("Quick Contact")
@@ -107,17 +108,17 @@ st.sidebar.markdown("""
 
 
 # --- Main Content Area based on Sidebar Selection ---
-if selected_page == "Home":
-    st.header("Welcome to Ecopure!")
+if selected_page == "About Us": # Combined "Home" and "About Us" content here
+    st.header("Welcome to EcoPure: Where Clean Meets Green")
     st.write("""
         Discover the revolutionary way to keep your reusable water bottles impeccably clean and fresh,
         all while being kind to our planet. Ecopure offers a powerful, plant-based solution designed
         for the modern eco-conscious individual.
         """)
 
-    # About Ecopure Section using st.expander
+    # Content from original "Home" section
     with st.expander("Learn More About Our Mission"):
-        st.subheader("About Our Mission") # Subheader inside expander
+        st.subheader("About Our Mission")
         st.write("""
             At Ecopure, we are dedicated to providing an innovative and environmentally responsible solution
             for maintaining the hygiene of your reusable water bottles. Our unique formula is crafted
@@ -128,11 +129,10 @@ if selected_page == "Home":
             and features a **fully biodegradable formula**. This means you can enjoy a fresh, clean bottle
             without contributing to environmental pollution. Choose Ecopure for a healthier you and a healthier Earth.
             """)
-        st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.",use_container_width=True)
+        st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.", use_container_width=True)
 
-    # Product Features Section using st.expander
     with st.expander("Why Choose Ecopure?"):
-        st.subheader("Why Choose Ecopure?") # Subheader inside expander
+        st.subheader("Why Choose Ecopure?")
         col1, col2, col3 = st.columns(3)
         with col1:
             st.markdown("#### 🌱 Plant-Based")
@@ -144,16 +144,16 @@ if selected_page == "Home":
             st.markdown("#### 🌍 Earth-Friendly")
             st.write("Biodegradable formula, safe for the planet.")
 
-# ...existing code...
-elif selected_page == "About Us": # New "About Us" section
-    st.header("About EcoPure: Where Clean Meets Green")
+    # Content from original "About Us" section
+    st.markdown("---") # Separator for visual distinction
+    st.subheader("Our Story and Vision")
     st.write("""
         At EcoPure, we are driven by a mission to foster a healthier planet and a healthier you.
         We believe in sustainable living, and that starts with the small choices we make every day,
         like reusing our water bottles. But reusing shouldn't mean compromising on hygiene.
         """)
 
-    with st.expander("The Problem We're Solving"): # Wrapped in expander
+    with st.expander("The Problem We're Solving"):
         st.subheader("The Problem We're Solving")
         st.markdown("""
             The growing concern over plastic waste in Vietnam highlights the urgent need for sustainable solutions.
@@ -167,7 +167,7 @@ elif selected_page == "About Us": # New "About Us" section
             *   **User Habits:** A significant portion of users do not rinse their bottles daily, contributing to the hygiene problem.
             """)
 
-    with st.expander("Our Solution: Innovation for a Cleaner Future"): # Wrapped in expander
+    with st.expander("Our Solution: Innovation for a Cleaner Future"):
         st.subheader("Our Solution: Innovation for a Cleaner Future")
         st.markdown("""
             EcoPure offers an innovative and eco-friendly solution to these challenges:
@@ -184,7 +184,7 @@ elif selected_page == "About Us": # New "About Us" section
             """)
         st.image("https://via.placeholder.com/700x350?text=EcoPure+Solution+Image", caption="EcoPure: Innovative Bottle Cleaning for a Sustainable Lifestyle", use_container_width=True)
 
-    with st.expander("Our Goals"): # Added new expander for "Our Goals"
+    with st.expander("Our Goals"):
         st.subheader("Our Goals")
         st.markdown("""
             Our primary goals at EcoPure are:
@@ -196,10 +196,8 @@ elif selected_page == "About Us": # New "About Us" section
             """)
         st.image("https://via.placeholder.com/700x350?text=EcoPure+Goals+Image", caption="Driving Sustainability and Hygiene", use_container_width=True)
 
-# ...existing code...
 
-
-elif selected_page == "Products": # Updated "Products" section
+elif selected_page == "Products":
     st.header("Our Products: EcoPure Bottle Washing Machines")
     st.write("Discover our range of innovative, eco-friendly bottle washing machines designed for various needs and environments.")
 
@@ -216,7 +214,7 @@ elif selected_page == "Products": # Updated "Products" section
         if st.button("🛒 Add Standard to Cart"):
             st.success("EcoPure Standard added to cart!")
 
-    st.markdown("---") # Add a separator between products
+    st.markdown("---")
 
     # Product 2: Standard Air
     with st.container(border=True):
@@ -231,7 +229,7 @@ elif selected_page == "Products": # Updated "Products" section
         if st.button("🛒 Add Standard Air to Cart"):
             st.success("EcoPure Standard Air added to cart!")
 
-    st.markdown("---") # Add a separator between products
+    st.markdown("---")
 
     # Product 3: Double
     with st.container(border=True):
@@ -246,7 +244,7 @@ elif selected_page == "Products": # Updated "Products" section
         if st.button("🛒 Add Double to Cart"):
             st.success("EcoPure Double added to cart!")
 
-    st.markdown("---") # Add a separator between products
+    st.markdown("---")
 
     # Product 4: Double Air
     with st.container(border=True):
@@ -291,8 +289,7 @@ elif selected_page == "Customer Reviews":
         )
 
     st.subheader("Leave Your Own Comment")
-    # Wrap the form in a container with a border instead of an expander
-    with st.container(border=True): # Changed border to True for consistency
+    with st.container(border=True):
         with st.form("comment_form", clear_on_submit=True):
             user_name = st.text_input("Your Name")
             user_comment = st.text_area("Your Comment")
@@ -310,7 +307,7 @@ elif selected_page == "Customer Reviews":
                     st.session_state.comments.append(new_comment)
                     save_comments(st.session_state.comments)
                     st.success("Thank you for your comment!")
-                    st.experimental_rerun() # Rerun to show new comment
+                    st.experimental_rerun()
                 else:
                     st.error("Please fill in your name and comment.")
 
@@ -324,14 +321,13 @@ elif selected_page == "Contact Us":
     with st.form("contact_form", clear_on_submit=True):
         contact_name = st.text_input("Your Name")
         contact_email = st.text_input("Your Email")
-        contact_subject = st.text_input("Subject") # Added subject field
+        contact_subject = st.text_input("Subject")
         contact_message = st.text_area("Your Message")
         contact_submitted = st.form_submit_button("Send Message")
 
         if contact_submitted:
-            if contact_name and contact_email and contact_subject and contact_message: # Updated condition
+            if contact_name and contact_email and contact_subject and contact_message:
                 st.success(f"Thank you, {contact_name}! Your message regarding '{contact_subject}' has been sent.")
-                # In a real app, you would send this email/message to a backend service
             else:
                 st.error("Please fill in all fields.")
 
@@ -355,9 +351,8 @@ elif selected_page == "Contact Us":
 
     with col2:
         st.subheader("Our Location")
-        # Using a placeholder image for a map, or you could use st.map if you have coordinates
         st.image("https://via.placeholder.com/300x200?text=Map+Location", caption="Our Office Location", use_column_width=True)
-        st.markdown("[View on Google Maps](https://www.google.com/maps/search/123+Green+Street,+Eco+City,+EC+12345)") # Example link
+        st.markdown("[View on Google Maps](https://www.google.com/maps/search/123+Green+Street,+Eco+City,+EC+12345)")
 
     st.markdown("---")
     st.subheader("Frequently Asked Questions (FAQs)")
@@ -387,4 +382,3 @@ st.markdown("""
         &copy; 2025 Ecopure. All rights reserved. | Email: <a href='mailto:info@ecopure.com' style='color: gray;'>info@ecopure.com</a>
     </p>
     """, unsafe_allow_html=True)
-# --- End of Streamlit App Code ---
