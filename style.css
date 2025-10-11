@@ -1,9 +1,7 @@
 /* Target the main app container and all its parent elements */
-/* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-background-color: #e5e5f7;
-opacity: 1.0;
-background: repeating-linear-gradient( 45deg, #444cf7, #444cf7 5px, #e5e5f7 5px, #e5e5f7 25px );
+    background: linear-gradient(to right, #459cc3, #304149, #75c6d3, #fef8dd) !important;
+    margin: 0;
+    padding: 0;
 }
-
 
