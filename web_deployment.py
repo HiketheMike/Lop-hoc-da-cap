@@ -79,8 +79,7 @@ selected_page = st.sidebar.radio(
     index=0
 )
 st.sidebar.markdown("---") # Separator
-# ...existing code...
-st.sidebar.markdown("---") # Separator
+
 
 st.sidebar.subheader("Quick Contact")
 st.sidebar.markdown(
@@ -184,6 +183,7 @@ elif selected_page == "Products":
             st.success("100ml Spray added to cart!")
 
 # ...existing code...
+e# ...existing code...
 elif selected_page == "Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
@@ -205,8 +205,8 @@ elif selected_page == "Customer Reviews":
         st.markdown("---") # Add a separator between comments for better readability
 
     st.subheader("Leave Your Own Comment")
-    # Wrap the form in an expander to keep the page cleaner
-    with st.expander("Click here to leave a comment and rating"):
+    # Wrap the form in a container with a border instead of an expander
+    with st.container(border=True):
         with st.form("comment_form", clear_on_submit=True):
             user_name = st.text_input("Your Name")
             user_comment = st.text_area("Your Comment")
@@ -228,15 +228,16 @@ elif selected_page == "Customer Reviews":
                 else:
                     st.error("Please fill in your name and comment.")
 
-# ...existing code...
 
     st.markdown("---")
     st.subheader("Other Ways to Reach Us")
+
     st.markdown("""
         **Email:** info@ecopure.com  
         **Phone:** +1 (800) 555-0123 (Mon-Fri, 9 AM - 5 PM EST)  
         **Address:** 123 Green Street, Eco City, EC 12345
         """)
+
     st.markdown("---")
     st.subheader("Follow Us")
     st.markdown("""
