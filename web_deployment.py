@@ -183,7 +183,6 @@ elif selected_page == "Products":
             st.success("100ml Spray added to cart!")
 
 # ...existing code...
-# ...existing code...
 elif selected_page == "Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
@@ -198,11 +197,19 @@ elif selected_page == "Customer Reviews":
 
     st.markdown("---")
 
-    # Display comments
+    # Display comments in styled boxes
     for i, comment_data in enumerate(st.session_state.comments):
-        st.markdown(f"**{comment_data['name']}** - {'⭐' * comment_data['rating']} ({comment_data['date']})")
-        st.write(comment_data['comment'])
-        st.markdown("---") # Add a separator between comments for better readability
+        st.markdown(
+            f"""
+            <div style="background-color: #e0f2f7; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #459cc3;">
+                <p style="font-weight: bold; color: #2c3e50; margin-bottom: 5px;">
+                    {comment_data['name']} - {'⭐' * comment_data['rating']} ({comment_data['date']})
+                </p>
+                <p style="color: #34495e;">{comment_data['comment']}</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
     st.subheader("Leave Your Own Comment")
     # Wrap the form in a container with a border instead of an expander
