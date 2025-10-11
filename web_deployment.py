@@ -37,7 +37,7 @@ st.set_page_config(
     page_title="Ecopure: Green Bottle Cleaner",
     page_icon="🌿",
     layout="centered",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded" # Changed to 'expanded' to show sidebar by default
 )
 
 # --- Session State for Comments ---
@@ -45,17 +45,34 @@ st.set_page_config(
 if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
-# --- Header Section (Always visible, above tabs) ---
+# --- Header Section (Always visible, above sidebar and main content) ---
 st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
 st.title("🌿 Ecopure: The Green Way to Clean Your Water Bottles")
 st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
 
-# --- Navigation Tabs ---
-tab1, tab2, tab3, tab4 = st.tabs(["Home", "Products", "Customer Reviews", "Contact Us"])
+# --- Sidebar Navigation ---
+st.sidebar.header("Navigation")
+# For an "eco-friendly" color, you would typically use a .streamlit/config.toml file
+# or inject custom CSS. For example, in .streamlit/config.toml:
+# [theme]
+# primaryColor="#4CAF50"
+# backgroundColor="#E8F5E9"
+# secondaryBackgroundColor="#A5D6A7"
+# textColor="#212121"
+# font="sans serif"
 
-with tab1: # Home Tab
+# The "expand on hover" effect for symbols is not natively supported by Streamlit's radio buttons.
+# We'll use emojis with text labels for clear navigation.
+selected_page = st.sidebar.radio(
+    "Go to",
+    ["🏠 Home", "🛍️ Products", "🌟 Customer Reviews", "📞 Contact Us"],
+    index=0 # Default to Home page
+)
+
+# --- Main Content Area based on Sidebar Selection ---
+if selected_page == "🏠 Home":
     st.header("Welcome to Ecopure!")
     st.write("""
         Discover the revolutionary way to keep your reusable water bottles impeccably clean and fresh,
@@ -90,7 +107,7 @@ with tab1: # Home Tab
         st.markdown("### 💧 Safe & Gentle")
         st.write("Completely free from harsh chemicals, phosphates, parabens, and artificial dyes. Safe for all bottle materials and your entire family.")
 
-with tab2: # Products Tab
+elif selected_page == "🛍️ Products":
     st.header("Our Products")
     st.write("Explore our range of eco-friendly cleaning solutions designed for your sustainable lifestyle.")
 
@@ -124,7 +141,7 @@ with tab2: # Products Tab
         st.success("Product 'Ecopure Travel Size Cleaner (100ml)' added to your cart! (Simulated)")
         st.balloons()
 
-with tab3: # Customer Reviews Tab
+elif selected_page == "🌟 Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
     st.markdown("---")
@@ -171,7 +188,7 @@ with tab3: # Customer Reviews Tab
             else:
                 st.warning("Please enter both your name and comment before submitting.")
 
-with tab4: # Contact Us Tab
+elif selected_page == "📞 Contact Us":
     st.header("Contact Our Customer Service")
     st.write("Have questions about Ecopure, your order, or just want to say hello? We're here to help!")
     st.markdown("---")
@@ -204,7 +221,7 @@ with tab4: # Contact Us Tab
         [Twitter](https://twitter.com/ecopure)
         """)
 
-# --- Footer (Always visible, below tabs) ---
+# --- Footer (Always visible, below main content) ---
 st.markdown("---")
 st.markdown("""
     <p style='text-align: center; color: gray; font-size: small;'>
