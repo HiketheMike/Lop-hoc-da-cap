@@ -54,14 +54,6 @@ st.markdown("""
 
 # --- Sidebar Navigation ---
 st.sidebar.header("Navigation")
-# For an "eco-friendly" color, you would typically use a .streamlit/config.toml file
-# or inject custom CSS. For example, in .streamlit/config.toml:
-# [theme]
-# primaryColor="#4CAF50"
-# backgroundColor="#E8F5E9"
-# secondaryBackgroundColor="#A5D6A7"
-# textColor="#212121"
-# font="sans serif"
 
 # The "expand on hover" effect for symbols is not natively supported by Streamlit's radio buttons.
 # We'll use emojis with text labels for clear navigation.
