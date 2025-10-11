@@ -1,6 +1,10 @@
 body {
-    /* Blue gradient for the entire page background */
-    background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Light blue to slightly darker light blue */
+    /* Use the background image instead of a gradient */
+    background-image: url('pictures/background.png');
+    background-size: cover; /* Cover the entire background area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
     margin: 0; /* Remove default body margin */
     padding: 0; /* Remove default body padding */
 }
