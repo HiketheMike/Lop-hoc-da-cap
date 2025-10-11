@@ -1,14 +1,65 @@
 body {
-    /* Example gradient: light blue to light purple */
+    /* Example gradient: light blue to white gradient */
     background: linear-gradient(to right, #e0f7fa, #ffffff);
-    /* You can adjust the colors and direction as desired */
-    /* For example:
-    background: linear-gradient(45deg, #f0f9ff, #cbeefd);
-    background: radial-gradient(circle, #e3f2fd, #bbdefb);
-    */
+    margin: 0; /* Remove default body margin */
+    padding: 0; /* Remove default body padding */
 }
 
-/* You might also want to style the main Streamlit content area */
+/* Ensure the main Streamlit app container doesn't override the body background */
 .stApp {
-    background: none; /* Ensure the Streamlit app container doesn't override the body background */
+    background: none;
+}
+
+/* Style the sidebar */
+.stSidebar {
+    background: linear-gradient(to bottom, #bbdefb, #e0f7fa); /* A subtle gradient for the sidebar */
+    color: #333333; /* Darker text for better contrast on light sidebar */
+    padding-top: 20px; /* Add some padding at the top */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+/* Style sidebar headers */
+.stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
+    color: #0d47a1; /* Darker blue for sidebar headers */
+    padding-left: 15px; /* Indent headers slightly */
+}
+
+/* Style sidebar radio buttons (navigation links) */
+.stSidebar .stRadio > label {
+    padding: 10px 15px; /* More padding for better click area */
+    font-size: 1.1em;
+    color: #1a237e; /* Dark blue for navigation links */
+    transition: background-color 0.2s ease; /* Smooth transition on hover */
+    border-radius: 5px; /* Slightly rounded corners */
+    margin-bottom: 5px; /* Space between items */
+}
+
+.stSidebar .stRadio > label:hover {
+    background-color: rgba(0, 0, 0, 0.08); /* Light hover effect */
+}
+
+/* Style sidebar info box */
+.stSidebar .stAlert.info {
+    background-color: #e3f2fd; /* Lighter blue for info box */
+    color: #1a237e;
+    border-left: 5px solid #2196f3;
+    margin: 15px; /* Add margin around the info box */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Style social media icons to ensure visibility on a light background */
+.stSidebar img {
+    filter: brightness(50%); /* Make icons darker if they are originally white or light */
+    transition: transform 0.2s ease; /* Smooth scale on hover */
+}
+
+.stSidebar img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* General markdown styling within sidebar for better readability */
+.stSidebar .stMarkdown {
+    padding-left: 15px;
+    padding-right: 15px;
 }

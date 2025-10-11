@@ -1,13 +1,7 @@
-# ...existing code...
-# <VSCode.Cell id="#VSC-6011bf7c" language="python">
-# import seaborn as sns
-# </VSCode.Cell>
-
-# --- Start of Streamlit App Code ---
 import streamlit as st
 from datetime import datetime
-import json
-import os # Import os module for path operations
+import json # Added for JSON operations
+import os   # Added for path operations
 
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
@@ -19,8 +13,6 @@ def local_css(file_name):
 
 local_css("style.css")
 
-# Define the path for the comments JSON file
-COMMENTS_FILE = "comments.json"
 # --- Functions to handle comments persistence ---
 def load_comments():
     """Loads comments from a JSON file. If the file doesn't exist, returns default comments."""
@@ -61,20 +53,37 @@ st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
 
-# --- Sidebar Navigation ---
-st.sidebar.header("Navigation")
+# --- Sidebar Content ---
+st.sidebar.image("https://via.placeholder.com/100x100?text=Logo", width=80) # Smaller logo for sidebar
+st.sidebar.title("Ecopure")
+st.sidebar.markdown("---") # Separator
 
-# The "expand on hover" effect for symbols is not natively supported by Streamlit's radio buttons.
-# We'll use emojis with text labels for clear navigation.
+st.sidebar.header("Navigation")
 selected_page = st.sidebar.radio(
     "Go to",
     ["🏠 Home", "🛍️ Products", "🌟 Customer Reviews", "📞 Contact Us"],
-    index=0 # Default to Home page
+    index=0
 )
+st.sidebar.markdown("---") # Separator
 
-# --- Main Content Area based on Sidebar Selection ---
-# --- Main Content Area based on Sidebar Selection ---
-# ...existing code...
+st.sidebar.subheader("Quick Contact")
+st.sidebar.info("Email: info@ecopure.com\nPhone: +1 (800) 555-0123")
+
+st.sidebar.subheader("Follow Us")
+st.sidebar.markdown("""
+    <div style="display: flex; justify-content: space-around; margin-top: 10px;">
+        <a href="https://facebook.com/ecopure" target="_blank" style="color: white; text-decoration: none;">
+            <img src="https://img.icons8.com/ios-filled/30/000000/facebook-new.png" alt="Facebook"/>
+        </a>
+        <a href="https://instagram.com/ecopure" target="_blank" style="color: white; text-decoration: none;">
+            <img src="https://img.icons8.com/ios-filled/30/000000/instagram-new.png" alt="Instagram"/>
+        </a>
+        <a href="https://twitter.com/ecopure" target="_blank" style="color: white; text-decoration: none;">
+            <img src="https://img.icons8.com/ios-filled/30/000000/twitter.png" alt="Twitter"/>
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 # --- Main Content Area based on Sidebar Selection ---
 if selected_page == "🏠 Home":
@@ -105,14 +114,14 @@ if selected_page == "🏠 Home":
         st.subheader("Why Choose Ecopure?") # Subheader inside expander
         col1, col2, col3 = st.columns(3)
         with col1:
-            st.markdown("### 🌱 Eco-Friendly Formula")
-            st.write("Our cleaner is derived from natural, sustainable plant sources, ensuring zero harm to aquatic life or ecosystems.")
+            st.markdown("#### 🌱 Plant-Based")
+            st.write("Made with natural, eco-friendly ingredients.")
         with col2:
-            st.markdown("### ✨ Superior Cleaning Power")
-            st.write("Experience a deep clean that effortlessly removes grime, bacteria, and lingering odors, reaching every crevice of your bottle.")
+            st.markdown("#### ✨ Sparkling Clean")
+            st.write("Removes odors and residues effectively.")
         with col3:
-            st.markdown("### 💧 Safe & Gentle")
-            st.write("Completely free from harsh chemicals, phosphates, parabens, and artificial dyes. Safe for all bottle materials and your entire family.")
+            st.markdown("#### 🌍 Earth-Friendly")
+            st.write("Biodegradable formula, safe for the planet.")
 
 elif selected_page == "🛍️ Products":
     st.header("Our Products")
@@ -131,25 +140,23 @@ elif selected_page == "🛍️ Products":
             *   **Best for:** Daily cleaning, deep sanitization
             """)
         if st.button("🛒 Add 500ml Bottle to Cart"):
-            st.success("Product 'Ecopure Water Bottle Cleaner (500ml)' added to your cart! (Simulated)")
-            st.balloons()
+            st.success("500ml Bottle added to cart!")
 
     st.markdown("---") # Add a separator between products
 
     with st.container(border=True): # border=True adds a visual border around the container
-        st.subheader("Ecopure Travel Size Cleaner - 100ml Spray")
-        st.image("https://via.placeholder.com/200x200?text=Ecopure+Travel+Spray", caption="Ecopure 100ml Travel Spray", width=150)
+        st.subheader("Ecopure Travel-Size Cleaner - 100ml Spray")
+        st.image("https://via.placeholder.com/400x400?text=Ecopure+100ml+Spray", caption="Ecopure 100ml Spray", width=250)
         st.metric(label="Price", value="$5.99")
         st.markdown("""
             Perfect for on-the-go freshness! This compact spray bottle is ideal for quick cleans
-            during travel, at the gym, or in the office.
+            when you're traveling or at the gym.
             *   **Volume:** 100ml
             *   **Ingredients:** 100% Plant-based, Biodegradable
-            *   **Best for:** Quick refreshes, travel
+            *   **Best for:** Travel, quick refreshes
             """)
-        if st.button("🛒 Add Travel Spray to Cart"):
-            st.success("Product 'Ecopure Travel Size Cleaner (100ml)' added to your cart! (Simulated)")
-            st.balloons()
+        if st.button("🛒 Add 100ml Spray to Cart"):
+            st.success("100ml Spray added to cart!")
 
 elif selected_page == "🌟 Customer Reviews":
     st.header("What Our Customers Say")
@@ -158,35 +165,27 @@ elif selected_page == "🌟 Customer Reviews":
 
     # Calculate and display average rating
     if st.session_state.comments:
-        total_ratings = sum(c['rating'] for c in st.session_state.comments if 'rating' in c)
-        num_rated_comments = sum(1 for c in st.session_state.comments if 'rating' in c)
-        if num_rated_comments > 0:
-            average_rating = total_ratings / num_rated_comments
-            stars = "⭐" * int(round(average_rating))
-            st.subheader(f"Overall Customer Rating: {stars} ({average_rating:.1f}/5.0)")
-        else:
-            st.subheader("No ratings yet.")
+        avg_rating = sum(c['rating'] for c in st.session_state.comments) / len(st.session_state.comments)
+        st.subheader(f"Average Rating: {avg_rating:.1f} ⭐")
     else:
-        st.subheader("No comments or ratings yet.")
+        st.subheader("No reviews yet. Be the first to leave one!")
 
     st.markdown("---")
 
     # Display comments using st.expander
     for i, comment_data in enumerate(st.session_state.comments):
-        rating_stars = "⭐" * comment_data.get('rating', 0)
-        # Use a unique key for each expander
-        with st.expander(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*", expanded=(i==0)): # Expand first comment by default
-            st.info(f"\"{comment_data['comment']}\"")
-        # No need for st.markdown("---") after each expander, as the expander itself provides visual separation
+        with st.expander(f"**{comment_data['name']}** - {'⭐' * comment_data['rating']} ({comment_data['date']})"):
+            st.write(comment_data['comment'])
 
     st.subheader("Leave Your Own Comment")
     # Wrap the form in an expander to keep the page cleaner
     with st.expander("Click here to leave a comment and rating"):
         with st.form("comment_form", clear_on_submit=True):
-            user_name = st.text_input("Your Name", max_chars=50)
-            user_comment = st.text_area("Your Comment", max_chars=500)
-            user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
+            user_name = st.text_input("Your Name")
+            user_comment = st.text_area("Your Comment")
+            user_rating = st.slider("Your Rating", 1, 5, 5)
             submitted = st.form_submit_button("Submit Comment")
+
             if submitted:
                 if user_name and user_comment:
                     new_comment = {
@@ -196,11 +195,11 @@ elif selected_page == "🌟 Customer Reviews":
                         "rating": user_rating
                     }
                     st.session_state.comments.append(new_comment)
-                    save_comments(st.session_state.comments) # Save comments to file
-                    st.success("Thank you for your comment and rating! It has been added to the list.")
-                    st.rerun()
+                    save_comments(st.session_state.comments)
+                    st.success("Thank you for your comment!")
+                    st.experimental_rerun() # Rerun to show new comment
                 else:
-                    st.warning("Please enter both your name and comment before submitting.")
+                    st.error("Please fill in your name and comment.")
 
 elif selected_page == "📞 Contact Us":
     st.header("Contact Our Customer Service")
@@ -209,16 +208,17 @@ elif selected_page == "📞 Contact Us":
 
     st.subheader("Send Us a Message")
     with st.form("contact_form", clear_on_submit=True):
-        contact_name = st.text_input("Your Name", max_chars=50)
-        contact_email = st.text_input("Your Email", help="We'll use this to get back to you.")
-        contact_subject = st.text_input("Subject", max_chars=100)
-        contact_message = st.text_area("Your Message", max_chars=1000)
+        contact_name = st.text_input("Your Name")
+        contact_email = st.text_input("Your Email")
+        contact_message = st.text_area("Your Message")
         contact_submitted = st.form_submit_button("Send Message")
+
         if contact_submitted:
             if contact_name and contact_email and contact_message:
-                st.success(f"Thank you, {contact_name}! Your message regarding '{contact_subject}' has been sent. We will get back to you at {contact_email} shortly. (This is a simulated message send.)")
+                st.success(f"Thank you, {contact_name}! Your message has been sent.")
+                # In a real app, you would send this email/message to a backend service
             else:
-                st.warning("Please fill in all required fields (Name, Email, Message).")
+                st.error("Please fill in all fields.")
 
     st.markdown("---")
     st.subheader("Other Ways to Reach Us")
