@@ -253,6 +253,72 @@ elif selected_page == "Customer Reviews":
         [Twitter](https://twitter.com/ecopure)
         """)
 
+
+elif selected_page == "Contact Us":
+    st.header("Contact Our Customer Service")
+    st.write("Have questions about Ecopure, your order, or just want to say hello? We're here to help!")
+    st.markdown("---")
+
+    st.subheader("Send Us a Message")
+    with st.form("contact_form", clear_on_submit=True):
+        contact_name = st.text_input("Your Name")
+        contact_email = st.text_input("Your Email")
+        contact_subject = st.text_input("Subject") # Added subject field
+        contact_message = st.text_area("Your Message")
+        contact_submitted = st.form_submit_button("Send Message")
+
+        if contact_submitted:
+            if contact_name and contact_email and contact_subject and contact_message: # Updated condition
+                st.success(f"Thank you, {contact_name}! Your message regarding '{contact_subject}' has been sent.")
+                # In a real app, you would send this email/message to a backend service
+            else:
+                st.error("Please fill in all fields.")
+
+    st.markdown("---")
+    st.subheader("Other Ways to Reach Us")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+            **Email:** info@ecopure.com  
+            **Phone:** +1 (800) 555-0123  
+            **Address:** 123 Green Street, Eco City, EC 12345
+            """)
+        st.subheader("Business Hours")
+        st.markdown("""
+            **Monday - Friday:** 9:00 AM - 5:00 PM EST  
+            **Saturday:** 10:00 AM - 2:00 PM EST  
+            **Sunday:** Closed
+            """)
+
+    with col2:
+        st.subheader("Our Location")
+        # Using a placeholder image for a map, or you could use st.map if you have coordinates
+        st.image("https://via.placeholder.com/300x200?text=Map+Location", caption="Our Office Location", use_column_width=True)
+        st.markdown("[View on Google Maps](https://www.google.com/maps/search/123+Green+Street,+Eco+City,+EC+12345)") # Example link
+
+    st.markdown("---")
+    st.subheader("Frequently Asked Questions (FAQs)")
+    with st.expander("What are Ecopure products made of?"):
+        st.write("Ecopure products are made with 100% plant-based, biodegradable ingredients, ensuring an effective and eco-friendly clean.")
+    with st.expander("Are Ecopure products safe for all water bottles?"):
+        st.write("Yes, our formula is designed to be safe and effective for all types of reusable water bottles, including stainless steel, glass, and plastic.")
+    with st.expander("How often should I clean my water bottle?"):
+        st.write("For optimal hygiene, we recommend cleaning your water bottle daily, especially if you use it frequently or for beverages other than water.")
+    with st.expander("Do you offer international shipping?"):
+        st.write("Currently, we ship within the United States and Canada. We are working on expanding our international shipping options soon!")
+
+
+    st.markdown("---")
+    st.subheader("Follow Us")
+    st.markdown("""
+        [Facebook](https://facebook.com/ecopure) |
+        [Instagram](https://instagram.com/ecopure) |
+        [Twitter](https://twitter.com/ecopure)
+        """)
+
+
 # --- Footer (Always visible, below main content) ---
 st.markdown("---")
 st.markdown("""
