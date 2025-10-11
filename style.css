@@ -1,27 +1,26 @@
 body {
-    /* Green gradient: very light green to white gradient */
-    background: linear-gradient(to right, #e8f5e9, #ffffff);
+    /* Blue gradient for the entire page background */
+    background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Light blue to slightly darker light blue */
     margin: 0; /* Remove default body margin */
     padding: 0; /* Remove default body padding */
 }
 
 /* Ensure the main Streamlit app container doesn't override the body background */
 .stApp {
-    background: none;
+    background: none; /* This allows the body background to show through */
 }
 
-/* Style the sidebar */
+/* Style the sidebar with a green gradient */
 .stSidebar {
-    /* A subtle green gradient for the sidebar */
-    background: linear-gradient(to bottom, #a5d6a7, #e8f5e9);
-    color: #2e7d32; /* Darker green text for better contrast on light sidebar */
+    background: linear-gradient(to bottom, #a5d6a7, #e8f5e9); /* A subtle green gradient for the sidebar */
+    color: #1b5e20; /* Dark green text for better contrast on green sidebar */
     padding-top: 20px; /* Add some padding at the top */
     box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
 /* Style sidebar headers */
 .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4, .stSidebar h5, .stSidebar h6 {
-    color: #1b5e20; /* Even darker green for sidebar headers */
+    color: #004d40; /* Even darker green for sidebar headers */
     padding-left: 15px; /* Indent headers slightly */
 }
 
@@ -49,7 +48,7 @@ body {
     border-radius: 5px;
 }
 
-/* Style social media icons to ensure visibility on a light background */
+/* Style social media icons to ensure visibility on a light green background */
 .stSidebar img {
     filter: brightness(30%); /* Make icons darker for better contrast on light green */
     transition: transform 0.2s ease; /* Smooth scale on hover */
