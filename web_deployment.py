@@ -147,6 +147,7 @@ if selected_page == "Home":
             st.markdown("#### 🌍 Earth-Friendly")
             st.write("Biodegradable formula, safe for the planet.")
 
+# ...existing code...
 elif selected_page == "About Us": # New "About Us" section
     st.header("About EcoPure: Where Clean Meets Green")
     st.write("""
@@ -155,34 +156,50 @@ elif selected_page == "About Us": # New "About Us" section
         like reusing our water bottles. But reusing shouldn't mean compromising on hygiene.
         """)
 
-    st.subheader("The Problem We're Solving")
-    st.markdown("""
-        The growing concern over plastic waste in Vietnam highlights the urgent need for sustainable solutions.
-        While reusable water bottles are a step in the right direction, they come with their own challenges:
-        *   **Bacterial Growth:** Many reusable water bottles harbor high levels of bacteria, often far exceeding safe limits,
-            leading to potential health risks and unpleasant odors.
-        *   **Cleaning Difficulties:** Narrow-mouth designs and intricate crevices make thorough cleaning with manual brushes
-            or hand washing nearly impossible, leaving behind residues and biofilms where microbes thrive.
-        *   **Lack of Public Facilities:** The absence of specialized bottle cleaning equipment in public spaces like schools,
-            offices, and gyms often leads users to skip or rush cleaning, accelerating bacterial growth.
-        *   **User Habits:** A significant portion of users do not rinse their bottles daily, contributing to the hygiene problem.
-        """)
+    with st.expander("The Problem We're Solving"): # Wrapped in expander
+        st.subheader("The Problem We're Solving")
+        st.markdown("""
+            The growing concern over plastic waste in Vietnam highlights the urgent need for sustainable solutions.
+            While reusable water bottles are a step in the right direction, they come with their own challenges:
+            *   **Bacterial Growth:** Many reusable water bottles harbor high levels of bacteria, often far exceeding safe limits,
+                leading to potential health risks and unpleasant odors.
+            *   **Cleaning Difficulties:** Narrow-mouth designs and intricate crevices make thorough cleaning with manual brushes
+                or hand washing nearly impossible, leaving behind residues and biofilms where microbes thrive.
+            *   **Lack of Public Facilities:** The absence of specialized bottle cleaning equipment in public spaces like schools,
+                offices, and gyms often leads users to skip or rush cleaning, accelerating bacterial growth.
+            *   **User Habits:** A significant portion of users do not rinse their bottles daily, contributing to the hygiene problem.
+            """)
 
-    st.subheader("Our Solution: Innovation for a Cleaner Future")
-    st.markdown("""
-        EcoPure offers an innovative and eco-friendly solution to these challenges:
-        *   **Effective Cleaning:** Our bottle washers utilize water pressure for quick and effective cleaning,
-            ensuring superior hygiene compared to traditional methods.
-        *   **Promoting Reuse:** We empower users to confidently reuse their bottles multiple times a day,
-            knowing they are hygienically clean, thereby supporting sustainable lifestyles and reducing disposable plastic waste.
-        *   **Accessibility & Convenience:** Designed for both individual and shared spaces, EcoPure machines
-            can be installed in homes, offices, gyms, and public areas, making bottle hygiene accessible to everyone.
-        *   **Optional Upgrades:** For environments requiring the highest hygiene standards (e.g., schools, hospitals, cafes),
-            we offer optional drying and sterilization functions.
-        *   **Eco-Friendly Operation:** Our standard models operate without electricity, relying on water pressure or mechanical parts,
-            which reduces equipment and electricity costs, aligning with our green mission.
-        """)
-    st.image("https://via.placeholder.com/700x350?text=EcoPure+Solution+Image", caption="EcoPure: Innovative Bottle Cleaning for a Sustainable Lifestyle", use_container_width=True)
+    with st.expander("Our Solution: Innovation for a Cleaner Future"): # Wrapped in expander
+        st.subheader("Our Solution: Innovation for a Cleaner Future")
+        st.markdown("""
+            EcoPure offers an innovative and eco-friendly solution to these challenges:
+            *   **Effective Cleaning:** Our bottle washers utilize water pressure for quick and effective cleaning,
+                ensuring superior hygiene compared to traditional methods.
+            *   **Promoting Reuse:** We empower users to confidently reuse their bottles multiple times a day,
+                knowing they are hygienically clean, thereby supporting sustainable lifestyles and reducing disposable plastic waste.
+            *   **Accessibility & Convenience:** Designed for both individual and shared spaces, EcoPure machines
+                can be installed in homes, offices, gyms, and public areas, making bottle hygiene accessible to everyone.
+            *   **Optional Upgrades:** For environments requiring the highest hygiene standards (e.g., schools, hospitals, cafes),
+                we offer optional drying and sterilization functions.
+            *   **Eco-Friendly Operation:** Our standard models operate without electricity, relying on water pressure or mechanical parts,
+                which reduces equipment and electricity costs, aligning with our green mission.
+            """)
+        st.image("https://via.placeholder.com/700x350?text=EcoPure+Solution+Image", caption="EcoPure: Innovative Bottle Cleaning for a Sustainable Lifestyle", use_container_width=True)
+
+    with st.expander("Our Goals"): # Added new expander for "Our Goals"
+        st.subheader("Our Goals")
+        st.markdown("""
+            Our primary goals at EcoPure are:
+            *   **Environmental Impact:** Significantly reduce plastic waste by promoting the widespread adoption of reusable bottles and providing effective cleaning solutions.
+            *   **Public Health:** Improve public hygiene by ensuring reusable bottles are consistently clean and free from harmful bacteria.
+            *   **Innovation:** Continuously develop and refine our bottle washing technology to offer the most efficient, convenient, and eco-friendly solutions on the market.
+            *   **Community Engagement:** Partner with educational institutions and green organizations to raise awareness about sustainable practices and bottle hygiene.
+            *   **Market Leadership:** Establish EcoPure as the leading provider of innovative bottle cleaning solutions in Vietnam and explore opportunities for international expansion.
+            """)
+        st.image("https://via.placeholder.com/700x350?text=EcoPure+Goals+Image", caption="Driving Sustainability and Hygiene", use_container_width=True)
+
+# ...existing code...
 
 
 elif selected_page == "Products": # Updated "Products" section
