@@ -18,9 +18,10 @@ st.set_page_config(
 # --- Session State for Comments ---
 if 'comments' not in st.session_state:
     st.session_state.comments = [
-        {"name": "Anna L.", "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.", "date": "2025-09-28"},
-        {"name": "Ben K.", "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!", "date": "2025-10-01"},
-        {"name": "Chloe P.", "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!", "date": "2025-10-05"}
+        {"name": "Anna L.", "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.", "date": "2025-09-28", "rating": 5},
+        {"name": "Ben K.", "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!", "date": "2025-10-01", "rating": 4},
+        {"name": "Chloe P.", "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!", "date": "2025-10-05", "rating": 5},
+        {"name": "David M.", "comment": "Good product, does what it says. A bit pricey but worth it for the eco-friendly aspect.", "date": "2025-10-08", "rating": 4}
     ]
 
 # --- Header Section (Always visible, above tabs) ---
@@ -107,8 +108,24 @@ with tab3: # Customer Reviews Tab
     st.write("Hear directly from the Ecopure community about their experiences.")
     st.markdown("---")
 
+    # Calculate and display average rating
+    if st.session_state.comments:
+        total_ratings = sum(c['rating'] for c in st.session_state.comments if 'rating' in c)
+        num_rated_comments = sum(1 for c in st.session_state.comments if 'rating' in c)
+        if num_rated_comments > 0:
+            average_rating = total_ratings / num_rated_comments
+            stars = "⭐" * int(round(average_rating))
+            st.subheader(f"Overall Customer Rating: {stars} ({average_rating:.1f}/5.0)")
+        else:
+            st.subheader("No ratings yet.")
+    else:
+        st.subheader("No comments or ratings yet.")
+
+    st.markdown("---")
+
     for comment_data in st.session_state.comments:
-        st.markdown(f"**{comment_data['name']}** on *{comment_data['date']}*")
+        rating_stars = "⭐" * comment_data.get('rating', 0) # Display stars based on rating
+        st.markdown(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*")
         st.info(f"\"{comment_data['comment']}\"")
         st.markdown("---")
 
@@ -116,17 +133,19 @@ with tab3: # Customer Reviews Tab
     with st.form("comment_form", clear_on_submit=True):
         user_name = st.text_input("Your Name", max_chars=50)
         user_comment = st.text_area("Your Comment", max_chars=500)
+        user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
         submitted = st.form_submit_button("Submit Comment")
         if submitted:
             if user_name and user_comment:
                 new_comment = {
                     "name": user_name,
                     "comment": user_comment,
-                    "date": datetime.now().strftime("%Y-%m-%d")
+                    "date": datetime.now().strftime("%Y-%m-%d"),
+                    "rating": user_rating # Add the selected rating
                 }
                 st.session_state.comments.append(new_comment)
-                st.success("Thank you for your comment! It has been added to the list.")
-                st.rerun() # Corrected from st.experimental_rerun()
+                st.success("Thank you for your comment and rating! It has been added to the list.")
+                st.rerun()
             else:
                 st.warning("Please enter both your name and comment before submitting.")
 
