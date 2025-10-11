@@ -35,23 +35,28 @@ def save_comments(comments_list):
 
 # --- Green Background, Button Styling, and Content Board ---
 # Inject custom CSS with background image, green button styling, and a white content board
-BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"  # Replace with your image URL
+# I've kept the previous Unsplash image. Feel free to replace it with another green-themed image URL.
+BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
 
 st.markdown(
     f"""
     <style>
+    /* Style for the entire app background */
     .stApp {{
         background-image: url("{BACKGROUND_IMAGE_URL}");
         background-size: cover;
-        background-attachment: fixed;
+        background-attachment: fixed; /* Makes the background image fixed while content scrolls */
+        background-position: center; /* Centers the background image */
     }}
     /* Style for the main content block to create a white board effect */
-    .st-emotion-cache-z5fcl4 {{ /* This class targets the main content container */
-        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-        padding: 20px; /* Add some padding around the content */
-        border-radius: 10px; /* Slightly rounded corners for the board */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    /* This targets the main content container where Streamlit widgets are rendered */
+    .main .block-container {{
+        background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for readability */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }}
+    /* Style for buttons */
     .stButton>button {{
         color: white;
         background-color: #4CAF50; /* Green */
@@ -79,11 +84,18 @@ st.set_page_config(
 )
 
 # --- Session State for Comments ---
-# Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
-# --- Header Section (Always visible, above tabs) ---
+# --- Hero Space (Transparent, shows background image) ---
+# This creates an empty, transparent space at the very top of the app.
+# The background image will show through this space.
+# Adjust the 'height' value to control how much of the background image is initially visible
+# before the main content starts.
+st.markdown("<div style='height: 300px;'></div>", unsafe_allow_html=True)
+
+# --- Header Section (Now appears after the hero space, on the content board) ---
+# These elements will now be inside the .main .block-container and thus have the white background
 st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
 st.title("🌿 Ecopure: The Green Way to Clean Your Water Bottles")
 st.markdown("""
