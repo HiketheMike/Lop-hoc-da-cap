@@ -64,6 +64,7 @@ selected_page = st.sidebar.radio(
 )
 
 # --- Main Content Area based on Sidebar Selection ---
+# --- Main Content Area based on Sidebar Selection ---
 if selected_page == "🏠 Home":
     st.header("Welcome to Ecopure!")
     st.write("""
@@ -72,66 +73,71 @@ if selected_page == "🏠 Home":
         for the modern eco-conscious individual.
         """)
 
-    # About Ecopure Section
-    st.subheader("About Our Mission")
-    st.write("""
-        At Ecopure, we are dedicated to providing an innovative and environmentally responsible solution
-        for maintaining the hygiene of your reusable water bottles. Our unique formula is crafted
-        to effectively eliminate stubborn residues, unpleasant odors, and harmful bacteria, ensuring
-        your bottles are not just clean, but truly pristine.
+    # About Ecopure Section using st.expander
+    with st.expander("Learn More About Our Mission"):
+        st.subheader("About Our Mission") # Subheader inside expander
+        st.write("""
+            At Ecopure, we are dedicated to providing an innovative and environmentally responsible solution
+            for maintaining the hygiene of your reusable water bottles. Our unique formula is crafted
+            to effectively eliminate stubborn residues, unpleasant odors, and harmful bacteria, ensuring
+            your bottles are not just clean, but truly pristine.
 
-        We are proud to emphasize our commitment to the planet: Ecopure is made with **100% plant-based ingredients**
-        and features a **fully biodegradable formula**. This means you can enjoy a fresh, clean bottle
-        without contributing to environmental pollution. Choose Ecopure for a healthier you and a healthier Earth.
-        """)
-    st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.", use_column_width=True)
+            We are proud to emphasize our commitment to the planet: Ecopure is made with **100% plant-based ingredients**
+            and features a **fully biodegradable formula**. This means you can enjoy a fresh, clean bottle
+            without contributing to environmental pollution. Choose Ecopure for a healthier you and a healthier Earth.
+            """)
+        st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.", use_column_width=True)
 
-    # Product Features Section
-    st.subheader("Why Choose Ecopure?")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.markdown("### 🌱 Eco-Friendly Formula")
-        st.write("Our cleaner is derived from natural, sustainable plant sources, ensuring zero harm to aquatic life or ecosystems.")
-    with col2:
-        st.markdown("### ✨ Superior Cleaning Power")
-        st.write("Experience a deep clean that effortlessly removes grime, bacteria, and lingering odors, reaching every crevice of your bottle.")
-    with col3:
-        st.markdown("### 💧 Safe & Gentle")
-        st.write("Completely free from harsh chemicals, phosphates, parabens, and artificial dyes. Safe for all bottle materials and your entire family.")
+    # Product Features Section using st.expander
+    with st.expander("Why Choose Ecopure?"):
+        st.subheader("Why Choose Ecopure?") # Subheader inside expander
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.markdown("### 🌱 Eco-Friendly Formula")
+            st.write("Our cleaner is derived from natural, sustainable plant sources, ensuring zero harm to aquatic life or ecosystems.")
+        with col2:
+            st.markdown("### ✨ Superior Cleaning Power")
+            st.write("Experience a deep clean that effortlessly removes grime, bacteria, and lingering odors, reaching every crevice of your bottle.")
+        with col3:
+            st.markdown("### 💧 Safe & Gentle")
+            st.write("Completely free from harsh chemicals, phosphates, parabens, and artificial dyes. Safe for all bottle materials and your entire family.")
 
 elif selected_page == "🛍️ Products":
     st.header("Our Products")
     st.write("Explore our range of eco-friendly cleaning solutions designed for your sustainable lifestyle.")
 
-    st.subheader("Ecopure Water Bottle Cleaner - 500ml Bottle")
-    st.image("https://via.placeholder.com/400x400?text=Ecopure+500ml+Bottle", caption="Ecopure 500ml Bottle", width=250)
-    st.metric(label="Price", value="$12.99", delta="-5% Today Only!")
-    st.markdown("""
-        Our flagship product! This 500ml bottle provides ample solution for months of sparkling clean
-        bottles. Its concentrated formula means a little goes a long way.
-        *   **Volume:** 500ml
-        *   **Ingredients:** 100% Plant-based, Biodegradable
-        *   **Best for:** Daily cleaning, deep sanitization
-        """)
-    if st.button("🛒 Add 500ml Bottle to Cart"):
-        st.success("Product 'Ecopure Water Bottle Cleaner (500ml)' added to your cart! (Simulated)")
-        st.balloons()
+    # Using st.container for each product for better visual separation
+    with st.container(border=True): # border=True adds a visual border around the container
+        st.subheader("Ecopure Water Bottle Cleaner - 500ml Bottle")
+        st.image("https://via.placeholder.com/400x400?text=Ecopure+500ml+Bottle", caption="Ecopure 500ml Bottle", width=250)
+        st.metric(label="Price", value="$12.99", delta="-5% Today Only!")
+        st.markdown("""
+            Our flagship product! This 500ml bottle provides ample solution for months of sparkling clean
+            bottles. Its concentrated formula means a little goes a long way.
+            *   **Volume:** 500ml
+            *   **Ingredients:** 100% Plant-based, Biodegradable
+            *   **Best for:** Daily cleaning, deep sanitization
+            """)
+        if st.button("🛒 Add 500ml Bottle to Cart"):
+            st.success("Product 'Ecopure Water Bottle Cleaner (500ml)' added to your cart! (Simulated)")
+            st.balloons()
 
-    st.markdown("---")
+    st.markdown("---") # Add a separator between products
 
-    st.subheader("Ecopure Travel Size Cleaner - 100ml Spray")
-    st.image("https://via.placeholder.com/200x200?text=Ecopure+Travel+Spray", caption="Ecopure 100ml Travel Spray", width=150)
-    st.metric(label="Price", value="$5.99")
-    st.markdown("""
-        Perfect for on-the-go freshness! This compact spray bottle is ideal for quick cleans
-        during travel, at the gym, or in the office.
-        *   **Volume:** 100ml
-        *   **Ingredients:** 100% Plant-based, Biodegradable
-        *   **Best for:** Quick refreshes, travel
-        """)
-    if st.button("🛒 Add Travel Spray to Cart"):
-        st.success("Product 'Ecopure Travel Size Cleaner (100ml)' added to your cart! (Simulated)")
-        st.balloons()
+    with st.container(border=True): # border=True adds a visual border around the container
+        st.subheader("Ecopure Travel Size Cleaner - 100ml Spray")
+        st.image("https://via.placeholder.com/200x200?text=Ecopure+Travel+Spray", caption="Ecopure 100ml Travel Spray", width=150)
+        st.metric(label="Price", value="$5.99")
+        st.markdown("""
+            Perfect for on-the-go freshness! This compact spray bottle is ideal for quick cleans
+            during travel, at the gym, or in the office.
+            *   **Volume:** 100ml
+            *   **Ingredients:** 100% Plant-based, Biodegradable
+            *   **Best for:** Quick refreshes, travel
+            """)
+        if st.button("🛒 Add Travel Spray to Cart"):
+            st.success("Product 'Ecopure Travel Size Cleaner (100ml)' added to your cart! (Simulated)")
+            st.balloons()
 
 elif selected_page == "🌟 Customer Reviews":
     st.header("What Our Customers Say")
@@ -153,32 +159,36 @@ elif selected_page == "🌟 Customer Reviews":
 
     st.markdown("---")
 
-    for comment_data in st.session_state.comments:
-        rating_stars = "⭐" * comment_data.get('rating', 0) # Display stars based on rating
-        st.markdown(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*")
-        st.info(f"\"{comment_data['comment']}\"")
-        st.markdown("---")
+    # Display comments using st.expander
+    for i, comment_data in enumerate(st.session_state.comments):
+        rating_stars = "⭐" * comment_data.get('rating', 0)
+        # Use a unique key for each expander
+        with st.expander(f"**{comment_data['name']}** {rating_stars} on *{comment_data['date']}*", expanded=(i==0)): # Expand first comment by default
+            st.info(f"\"{comment_data['comment']}\"")
+        # No need for st.markdown("---") after each expander, as the expander itself provides visual separation
 
     st.subheader("Leave Your Own Comment")
-    with st.form("comment_form", clear_on_submit=True):
-        user_name = st.text_input("Your Name", max_chars=50)
-        user_comment = st.text_area("Your Comment", max_chars=500)
-        user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
-        submitted = st.form_submit_button("Submit Comment")
-        if submitted:
-            if user_name and user_comment:
-                new_comment = {
-                    "name": user_name,
-                    "comment": user_comment,
-                    "date": datetime.now().strftime("%Y-%m-%d"),
-                    "rating": user_rating
-                }
-                st.session_state.comments.append(new_comment)
-                save_comments(st.session_state.comments) # Save comments to file
-                st.success("Thank you for your comment and rating! It has been added to the list.")
-                st.rerun()
-            else:
-                st.warning("Please enter both your name and comment before submitting.")
+    # Wrap the form in an expander to keep the page cleaner
+    with st.expander("Click here to leave a comment and rating"):
+        with st.form("comment_form", clear_on_submit=True):
+            user_name = st.text_input("Your Name", max_chars=50)
+            user_comment = st.text_area("Your Comment", max_chars=500)
+            user_rating = st.slider("Your Rating", min_value=1, max_value=5, value=5, help="Rate your experience from 1 (Poor) to 5 (Excellent)")
+            submitted = st.form_submit_button("Submit Comment")
+            if submitted:
+                if user_name and user_comment:
+                    new_comment = {
+                        "name": user_name,
+                        "comment": user_comment,
+                        "date": datetime.now().strftime("%Y-%m-%d"),
+                        "rating": user_rating
+                    }
+                    st.session_state.comments.append(new_comment)
+                    save_comments(st.session_state.comments) # Save comments to file
+                    st.success("Thank you for your comment and rating! It has been added to the list.")
+                    st.rerun()
+                else:
+                    st.warning("Please enter both your name and comment before submitting.")
 
 elif selected_page == "📞 Contact Us":
     st.header("Contact Our Customer Service")
