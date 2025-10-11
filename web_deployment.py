@@ -79,9 +79,22 @@ selected_page = st.sidebar.radio(
     index=0
 )
 st.sidebar.markdown("---") # Separator
+# ...existing code...
+st.sidebar.markdown("---") # Separator
 
 st.sidebar.subheader("Quick Contact")
-st.sidebar.info("Email: info@ecopure.com\nPhone: +1 (800) 555-0123")
+st.sidebar.markdown(
+    """
+    <div style="padding: 10px; background-color: #459cc3; border-radius: 5px; margin-bottom: 5px; color: white;">
+        Email: info@ecopure.com<br>
+        Phone: +1 (800) 555-0123
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.sidebar.subheader("Follow Us")
+
 
 st.sidebar.subheader("Follow Us")
 st.sidebar.markdown("""
