@@ -8,7 +8,7 @@ import streamlit as st
 from datetime import datetime
 import json
 import os
-import streamlit.components.v1 as components  # Import components
+import streamlit.components.v1 as components
 
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
@@ -33,8 +33,8 @@ def save_comments(comments_list):
     with open(COMMENTS_FILE, "w", encoding="utf-8") as f:
         json.dump(comments_list, f, indent=4, ensure_ascii=False)
 
-# --- Green Background and Button Styling ---
-# Inject custom CSS with background image and green button styling
+# --- Green Background, Button Styling, and Content Board ---
+# Inject custom CSS with background image, green button styling, and a white content board
 BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"  # Replace with your image URL
 
 st.markdown(
@@ -44,6 +44,13 @@ st.markdown(
         background-image: url("{BACKGROUND_IMAGE_URL}");
         background-size: cover;
         background-attachment: fixed;
+    }}
+    /* Style for the main content block to create a white board effect */
+    .st-emotion-cache-z5fcl4 {{ /* This class targets the main content container */
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+        padding: 20px; /* Add some padding around the content */
+        border-radius: 10px; /* Slightly rounded corners for the board */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     }}
     .stButton>button {{
         color: white;
