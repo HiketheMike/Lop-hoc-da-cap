@@ -1,6 +1,6 @@
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-    background: linear-gradient(to right, #459cc3, #304149, #75c6d3, #fef8dd) !important;
+    background: linear-gradient(to right, #75c6d3, #fef8dd) !important;
     margin: 0;
     padding: 0;
 }
