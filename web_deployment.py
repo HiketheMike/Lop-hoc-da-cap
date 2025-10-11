@@ -6,6 +6,31 @@
 # --- Start of Streamlit App Code ---
 import streamlit as st
 from datetime import datetime
+import json
+import os # Import os module for path operations
+
+# Define the path for the comments JSON file
+COMMENTS_FILE = "comments.json"
+
+# --- Functions to handle comments persistence ---
+def load_comments():
+    """Loads comments from a JSON file. If the file doesn't exist, returns default comments."""
+    if os.path.exists(COMMENTS_FILE):
+        with open(COMMENTS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    else:
+        # Default comments if the file doesn't exist
+        return [
+            {"name": "Anna L.", "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.", "date": "2025-09-28", "rating": 5},
+            {"name": "Ben K.", "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!", "date": "2025-10-01", "rating": 4},
+            {"name": "Chloe P.", "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!", "date": "2025-10-05", "rating": 5},
+            {"name": "David M.", "comment": "Good product, does what it says. A bit pricey but worth it for the eco-friendly aspect.", "date": "2025-10-08", "rating": 4}
+        ]
+
+def save_comments(comments_list):
+    """Saves the current list of comments to a JSON file."""
+    with open(COMMENTS_FILE, "w", encoding="utf-8") as f:
+        json.dump(comments_list, f, indent=4, ensure_ascii=False)
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -16,13 +41,9 @@ st.set_page_config(
 )
 
 # --- Session State for Comments ---
+# Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
-    st.session_state.comments = [
-        {"name": "Anna L.", "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.", "date": "2025-09-28", "rating": 5},
-        {"name": "Ben K.", "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!", "date": "2025-10-01", "rating": 4},
-        {"name": "Chloe P.", "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!", "date": "2025-10-05", "rating": 5},
-        {"name": "David M.", "comment": "Good product, does what it says. A bit pricey but worth it for the eco-friendly aspect.", "date": "2025-10-08", "rating": 4}
-    ]
+    st.session_state.comments = load_comments()
 
 # --- Header Section (Always visible, above tabs) ---
 st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
@@ -141,9 +162,10 @@ with tab3: # Customer Reviews Tab
                     "name": user_name,
                     "comment": user_comment,
                     "date": datetime.now().strftime("%Y-%m-%d"),
-                    "rating": user_rating # Add the selected rating
+                    "rating": user_rating
                 }
                 st.session_state.comments.append(new_comment)
+                save_comments(st.session_state.comments) # Save comments to file
                 st.success("Thank you for your comment and rating! It has been added to the list.")
                 st.rerun()
             else:
