@@ -10,6 +10,11 @@ body {
     background: none; /* This allows the body background to show through */
 }
 
+/* Explicitly ensure the main content block also has no background */
+[data-testid="stAppViewBlock"] {
+    background: none;
+}
+
 /* Style the sidebar with a green gradient */
 .stSidebar {
     background: linear-gradient(to bottom, #a5d6a7, #e8f5e9); /* A subtle green gradient for the sidebar */
