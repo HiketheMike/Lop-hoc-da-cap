@@ -358,8 +358,7 @@ elif selected_page == "Contact Us":
         st.write("Yes, our formula is designed to be safe and effective for all types of reusable water bottles, including stainless steel, glass, and plastic.")
     with st.expander("How often should I clean my water bottle?"):
         st.write("For optimal hygiene, we recommend cleaning your water bottle daily, especially if you use it frequently or for beverages other than water.")
-    with st.expander("Do you offer international shipping?"):
-        st.write("Currently, we ship within the United States and Canada. We are working on expanding our international shipping options soon!")
+
 
 
     st.markdown("---")
