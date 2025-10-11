@@ -1,4 +1,9 @@
+# ...existing code...
+# <VSCode.Cell id="#VSC-6011bf7c" language="python">
+# import seaborn as sns
+# </VSCode.Cell>
 
+# --- Start of Streamlit App Code ---
 import streamlit as st
 from datetime import datetime
 import json
@@ -32,16 +37,9 @@ st.set_page_config(
     page_title="Ecopure: Green Bottle Cleaner",
     page_icon="🌿",
     layout="centered",
-    initial_sidebar_state="collapsed",
-    # --- Theming for a "more green" look ---
-    primaryColor="#4CAF50",          # A vibrant green for interactive elements (buttons, sliders)
-    backgroundColor="#E8F5E9",       # A very light, subtle green for the main background
-    secondaryBackgroundColor="#A5D6A7", # A slightly darker, softer green for secondary backgrounds (e.g., forms)
-    textColor="#2E7D32",             # A dark green for primary text for good contrast
-    font="sans serif"                # You can choose "sans serif", "serif", or "monospace"
+    initial_sidebar_state="collapsed"
 )
 
-# ...existing code...
 # --- Session State for Comments ---
 # Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
