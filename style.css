@@ -1,6 +1,6 @@
 body {
     /* Example gradient: light blue to light purple */
-    background: linear-gradient(to right, #e0f7fa, #bbdefb);
+    background: linear-gradient(to right, #e0f7fa, #ffffff);
     /* You can adjust the colors and direction as desired */
     /* For example:
     background: linear-gradient(45deg, #f0f9ff, #cbeefd);
