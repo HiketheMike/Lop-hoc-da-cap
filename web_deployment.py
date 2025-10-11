@@ -183,6 +183,7 @@ elif selected_page == "Products":
         if st.button("🛒 Add 100ml Spray to Cart"):
             st.success("100ml Spray added to cart!")
 
+# ...existing code...
 elif selected_page == "Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
@@ -197,10 +198,11 @@ elif selected_page == "Customer Reviews":
 
     st.markdown("---")
 
-    # Display comments using st.expander
+    # Display comments
     for i, comment_data in enumerate(st.session_state.comments):
-        with st.expander(f"**{comment_data['name']}** - {'⭐' * comment_data['rating']} ({comment_data['date']})"):
-            st.write(comment_data['comment'])
+        st.markdown(f"**{comment_data['name']}** - {'⭐' * comment_data['rating']} ({comment_data['date']})")
+        st.write(comment_data['comment'])
+        st.markdown("---") # Add a separator between comments for better readability
 
     st.subheader("Leave Your Own Comment")
     # Wrap the form in an expander to keep the page cleaner
@@ -226,24 +228,7 @@ elif selected_page == "Customer Reviews":
                 else:
                     st.error("Please fill in your name and comment.")
 
-elif selected_page == "Contact Us":
-    st.header("Contact Our Customer Service")
-    st.write("Have questions about Ecopure, your order, or just want to say hello? We're here to help!")
-    st.markdown("---")
-
-    st.subheader("Send Us a Message")
-    with st.form("contact_form", clear_on_submit=True):
-        contact_name = st.text_input("Your Name")
-        contact_email = st.text_input("Your Email")
-        contact_message = st.text_area("Your Message")
-        contact_submitted = st.form_submit_button("Send Message")
-
-        if contact_submitted:
-            if contact_name and contact_email and contact_message:
-                st.success(f"Thank you, {contact_name}! Your message has been sent.")
-                # In a real app, you would send this email/message to a backend service
-            else:
-                st.error("Please fill in all fields.")
+# ...existing code...
 
     st.markdown("---")
     st.subheader("Other Ways to Reach Us")
