@@ -53,11 +53,7 @@ st.markdown("""
     """)
 
 # --- Sidebar Content ---
-st.sidebar.image("pictures/big_icon.png", width=80) # Re-added sidebar image
-st.sidebar.title("Ecopure")
-st.sidebar.markdown("---")
-
-st.sidebar.header("Navigation")
+st.sidebar.title("Navigation")
 st.sidebar.markdown(
     """
     <style>
