@@ -12,6 +12,15 @@ import os # Import os module for path operations
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
 
+# --- Inject custom CSS for gradient background ---
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+local_css("style.css")
+
+# Define the path for the comments JSON file
+COMMENTS_FILE = "comments.json"
 # --- Functions to handle comments persistence ---
 def load_comments():
     """Loads comments from a JSON file. If the file doesn't exist, returns default comments."""
