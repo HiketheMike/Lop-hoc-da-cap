@@ -48,7 +48,7 @@ if 'comments' not in st.session_state:
 
 # --- Header Section (Always visible, above sidebar and main content) ---
 st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
-st.title("🌿 Ecopure: The Green Way to Clean Your Water Bottles")
+st.title("🌿 Ecopure: Where Clean meet Green")
 st.markdown("""
     *Your trusted partner for a sparkling clean and eco-conscious hydration experience.*
     """)
