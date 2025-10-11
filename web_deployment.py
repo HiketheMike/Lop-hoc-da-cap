@@ -132,7 +132,7 @@ if selected_page == "Home":
             and features a **fully biodegradable formula**. This means you can enjoy a fresh, clean bottle
             without contributing to environmental pollution. Choose Ecopure for a healthier you and a healthier Earth.
             """)
-        st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.", use_column_width=True)
+        st.image("https://via.placeholder.com/700x350?text=Ecopure+Product+Image", caption="Ecopure Water Bottle Cleaner: Clean, Green, Pristine.",use_container_width=True)
 
     # Product Features Section using st.expander
     with st.expander("Why Choose Ecopure?"):
