@@ -1,6 +1,6 @@
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%) !important;
+    background-image: url("URL_OF_YOUR_ECOFRIENDLY_IMAGE_HERE"); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@ html, body, [data-testid="stAppViewContainer"] {
     background: transparent !important;
 }
 
-/* Main content area - make it transparent to show the green background */
+/* Main content area - make it transparent to show the background image */
 .main .block-container {
     background: transparent !important;
     padding: 2rem;
@@ -31,14 +31,14 @@ html, body, [data-testid="stAppViewContainer"] {
     border: 1px solid #e8f5e9;
 }
 
-/* Headers with green color */
+/* Headers with black color */
 h1, h2, h3 {
-    color: #1b5e20 !important;
+    color: #000000 !important; /* Changed to black */
 }
 
-/* Regular text color - keep it dark for readability */
+/* Regular text color - keep it black for readability */
 p, div, span {
-    color: #333333 !important;
+    color: #000000 !important; /* Changed to black */
 }
 
 /* Style the sidebar with the original colors */
