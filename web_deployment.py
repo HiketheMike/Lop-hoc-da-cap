@@ -54,7 +54,7 @@ st.markdown("""
     """)
 
 # --- Sidebar Content ---
-st.sidebar.image("https://via.placeholder.com/100x100?text=Logo", width=80) # Smaller logo for sidebar
+st.sidebar.image("pictures/small_icon.png", width=80) # Changed image source to local file
 st.sidebar.title("Ecopure")
 st.sidebar.markdown("---") # Separator
 
