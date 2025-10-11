@@ -7,7 +7,8 @@
 import streamlit as st
 from datetime import datetime
 import json
-import os # Import os module for path operations
+import os
+import streamlit.components.v1 as components  # Import components
 
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
@@ -31,6 +32,36 @@ def save_comments(comments_list):
     """Saves the current list of comments to a JSON file."""
     with open(COMMENTS_FILE, "w", encoding="utf-8") as f:
         json.dump(comments_list, f, indent=4, ensure_ascii=False)
+
+# --- Green Background and Button Styling ---
+# Inject custom CSS with background image and green button styling
+BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"  # Replace with your image URL
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url("{BACKGROUND_IMAGE_URL}");
+        background-size: cover;
+        background-attachment: fixed;
+    }}
+    .stButton>button {{
+        color: white;
+        background-color: #4CAF50; /* Green */
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # --- Page Configuration ---
 st.set_page_config(
