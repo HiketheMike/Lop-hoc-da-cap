@@ -93,8 +93,6 @@ st.sidebar.markdown(
     unsafe_allow_html=True
 )
 
-st.sidebar.subheader("Follow Us")
-
 
 st.sidebar.subheader("Follow Us")
 st.sidebar.markdown("""
@@ -113,7 +111,7 @@ st.sidebar.markdown("""
 
 
 # --- Main Content Area based on Sidebar Selection ---
-if selected_page == "🏠 Home":
+if selected_page == "Home":
     st.header("Welcome to Ecopure!")
     st.write("""
         Discover the revolutionary way to keep your reusable water bottles impeccably clean and fresh,
@@ -150,7 +148,7 @@ if selected_page == "🏠 Home":
             st.markdown("#### 🌍 Earth-Friendly")
             st.write("Biodegradable formula, safe for the planet.")
 
-elif selected_page == "🛍️ Products":
+elif selected_page == "Products":
     st.header("Our Products")
     st.write("Explore our range of eco-friendly cleaning solutions designed for your sustainable lifestyle.")
 
@@ -185,7 +183,7 @@ elif selected_page == "🛍️ Products":
         if st.button("🛒 Add 100ml Spray to Cart"):
             st.success("100ml Spray added to cart!")
 
-elif selected_page == "🌟 Customer Reviews":
+elif selected_page == "Customer Reviews":
     st.header("What Our Customers Say")
     st.write("Hear directly from the Ecopure community about their experiences.")
     st.markdown("---")
@@ -228,7 +226,7 @@ elif selected_page == "🌟 Customer Reviews":
                 else:
                     st.error("Please fill in your name and comment.")
 
-elif selected_page == "📞 Contact Us":
+elif selected_page == "Contact Us":
     st.header("Contact Our Customer Service")
     st.write("Have questions about Ecopure, your order, or just want to say hello? We're here to help!")
     st.markdown("---")
