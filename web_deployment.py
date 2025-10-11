@@ -54,11 +54,8 @@ st.markdown("""
     """)
 
 # --- Sidebar Content ---
-st.sidebar.image("pictures/small_icon.png", width=80) # Changed image source to local file
-st.sidebar.title("Ecopure")
-st.sidebar.markdown("---") # Separator
 
-st.sidebar.header("Navigation")
+st.sidebar.title("Navigation")
 # Use st.markdown to create colored boxes around the radio buttons
 st.sidebar.markdown(
     """
