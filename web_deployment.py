@@ -78,7 +78,7 @@ selected_page = st.sidebar.radio(
     ["Home", "About Us", "Products", "Customer Reviews", "Contact Us"], # Added "About Us"
     index=0
 )
-st.sidebar.markdown("---") # Separator
+st.sidebar.markdown("---") 
 
 
 st.sidebar.subheader("Quick Contact")
