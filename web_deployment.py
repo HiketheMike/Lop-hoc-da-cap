@@ -54,7 +54,7 @@ st.markdown(
         background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for readability */
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; /* A subtle shadow for depth */
     }}
     /* Style for buttons */
     .stButton>button {{
@@ -69,6 +69,22 @@ st.markdown(
         margin: 4px 2px;
         cursor: pointer;
         border-radius: 5px;
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }}
+    .stButton>button:hover {{
+        background-color: #45a049; /* Darker green on hover */
+    }}
+    /* Style for the tabs to ensure they also sit on the white board */
+    .stTabs [data-baseweb="tab-list"] button {{
+        background-color: #f0f2f6; /* Light gray for inactive tabs */
+        color: #333;
+        border-radius: 5px 5px 0 0;
+        margin-right: 5px;
+    }}
+    .stTabs [data-baseweb="tab-list"] button[aria-selected="true"] {{
+        background-color: white; /* White for active tab */
+        color: #4CAF50; /* Green text for active tab */
+        border-bottom: 2px solid #4CAF50; /* Green underline for active tab */
     }}
     </style>
     """,
