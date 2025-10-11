@@ -61,7 +61,7 @@ st.sidebar.markdown("---") # Separator
 st.sidebar.header("Navigation")
 selected_page = st.sidebar.radio(
     "Go to",
-    ["🏠 Home", "🛍️ Products", "🌟 Customer Reviews", "📞 Contact Us"],
+    ["Home", "Products", "Customer Reviews", "Contact Us"],
     index=0
 )
 st.sidebar.markdown("---") # Separator

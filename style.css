@@ -22,6 +22,17 @@
     color: #fef8dd !important; /* Revert to the original heading color */
 }
 
+/* Target the radio button labels in the sidebar */
+div[data-baseweb="radio"] > label {
+    color: #75c6d3 !important; /* Set the text color */
+}
+
+/* Target the selected radio button */
+div[data-baseweb="radio"]:has(input:checked) {
+    background-color: rgba(117, 198, 211, 0.2) !important; /* Light blue background */
+    border-radius: 0.375rem; /* Optional: Add some rounding */
+}
+
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
     background: linear-gradient(to right, #75c6d3, #fef8dd) !important;
