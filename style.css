@@ -1,6 +1,6 @@
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
-    background-image: url("https://github.com/HiketheMike/L-p-h-c--a-c-p/blob/main/pictures/background.png");
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw_-JnDLbgyAdOMYjQpOGJt18MgoiVhSVBow&s");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
