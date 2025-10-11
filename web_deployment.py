@@ -1,7 +1,3 @@
-# ...existing code...
-# <VSCode.Cell id="#VSC-6011bf7c" language="python">
-# import seaborn as sns
-# </VSCode.Cell>
 
 import streamlit as st
 from datetime import datetime
