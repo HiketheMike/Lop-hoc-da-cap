@@ -1,8 +1,8 @@
 /* Target the Streamlit sidebar */
 [data-testid="stSidebar"] {
     background: linear-gradient(to bottom, #459cc3, #304149) !important;
+    color: #fef8dd !important; /* Set text color for sidebar */
 }
-
 
 /* Target the main app container and all its parent elements */
 html, body, [data-testid="stAppViewContainer"] {
@@ -10,6 +10,3 @@ html, body, [data-testid="stAppViewContainer"] {
     margin: 0;
     padding: 0;
 }
-
-
-
