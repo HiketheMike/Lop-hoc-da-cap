@@ -7,8 +7,7 @@
 import streamlit as st
 from datetime import datetime
 import json
-import os
-import streamlit.components.v1 as components
+import os # Import os module for path operations
 
 # Define the path for the comments JSON file
 COMMENTS_FILE = "comments.json"
@@ -33,64 +32,6 @@ def save_comments(comments_list):
     with open(COMMENTS_FILE, "w", encoding="utf-8") as f:
         json.dump(comments_list, f, indent=4, ensure_ascii=False)
 
-# --- Green Background, Button Styling, and Content Board ---
-# Inject custom CSS with background image, green button styling, and a white content board
-# I've kept the previous Unsplash image. Feel free to replace it with another green-themed image URL.
-BACKGROUND_IMAGE_URL = "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
-
-st.markdown(
-    f"""
-    <style>
-    /* Style for the entire app background */
-    .stApp {{
-        background-image: url("{BACKGROUND_IMAGE_URL}");
-        background-size: cover;
-        background-attachment: fixed; /* Makes the background image fixed while content scrolls */
-        background-position: center; /* Centers the background image */
-    }}
-    /* Style for the main content block to create a white board effect */
-    /* This targets the main content container where Streamlit widgets are rendered */
-    .main .block-container {{
-        background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for readability */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; /* A subtle shadow for depth */
-    }}
-    /* Style for buttons */
-    .stButton>button {{
-        color: white;
-        background-color: #4CAF50; /* Green */
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s ease; /* Smooth transition on hover */
-    }}
-    .stButton>button:hover {{
-        background-color: #45a049; /* Darker green on hover */
-    }}
-    /* Style for the tabs to ensure they also sit on the white board */
-    .stTabs [data-baseweb="tab-list"] button {{
-        background-color: #f0f2f6; /* Light gray for inactive tabs */
-        color: #333;
-        border-radius: 5px 5px 0 0;
-        margin-right: 5px;
-    }}
-    .stTabs [data-baseweb="tab-list"] button[aria-selected="true"] {{
-        background-color: white; /* White for active tab */
-        color: #4CAF50; /* Green text for active tab */
-        border-bottom: 2px solid #4CAF50; /* Green underline for active tab */
-    }}
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # --- Page Configuration ---
 st.set_page_config(
     page_title="Ecopure: Green Bottle Cleaner",
@@ -100,18 +41,11 @@ st.set_page_config(
 )
 
 # --- Session State for Comments ---
+# Load comments from the file when the app starts or session initializes
 if 'comments' not in st.session_state:
     st.session_state.comments = load_comments()
 
-# --- Hero Space (Transparent, shows background image) ---
-# This creates an empty, transparent space at the very top of the app.
-# The background image will show through this space.
-# Adjust the 'height' value to control how much of the background image is initially visible
-# before the main content starts.
-st.markdown("<div style='height: 300px;'></div>", unsafe_allow_html=True)
-
-# --- Header Section (Now appears after the hero space, on the content board) ---
-# These elements will now be inside the .main .block-container and thus have the white background
+# --- Header Section (Always visible, above tabs) ---
 st.image("https://via.placeholder.com/150x150?text=Ecopure+Logo", width=100)
 st.title("🌿 Ecopure: The Green Way to Clean Your Water Bottles")
 st.markdown("""
