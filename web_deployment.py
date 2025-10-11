@@ -213,7 +213,7 @@ elif selected_page == "Customer Reviews":
 
     st.subheader("Leave Your Own Comment")
     # Wrap the form in a container with a border instead of an expander
-    with st.container(border=True):
+    with st.container(border=False):
         with st.form("comment_form", clear_on_submit=True):
             user_name = st.text_input("Your Name")
             user_comment = st.text_area("Your Comment")
