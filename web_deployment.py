@@ -347,8 +347,8 @@ elif selected_page == "Contact Us":
 
     with col2:
         st.subheader("Our Location")
-        st.image("https://via.placeholder.com/300x200?text=Map+Location", caption="Our Office Location", use_column_width=True)
-        st.markdown("[View on Google Maps](https://www.google.com/maps/search/123+Green+Street,+Eco+City,+EC+12345)")
+        st.image("https://via.placeholder.com/300x200?text=Map+Location", caption="Our Office Location", use_container_width=True)
+        st.markdown("[View on Google Maps](hhttps://www.google.com/maps/place/Vietnamese%E2%80%93German+University+(VGU)/@11.1075023,106.6115314,17z/data=!3m1!4b1!4m6!3m5!1s0x3174ce286d98ddc7:0xfa362a1ccda178aa!8m2!3d11.107497!4d106.6141063!16s%2Fm%2F0g9y6j9?entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D)")
 
     st.markdown("---")
     st.subheader("Frequently Asked Questions (FAQs)")
