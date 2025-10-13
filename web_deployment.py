@@ -200,7 +200,7 @@ elif selected_page == "Products":
     # Product 1: Standard
     with st.container(border=True):
         st.subheader("EcoPure Standard")
-        st.image("https://via.placeholder.com/400x400?text=EcoPure+Standard", caption="EcoPure Standard Model", width=250)
+        st.image("pictures/standard.jpg", caption="EcoPure Standard Model", width=250)
         st.metric(label="Price", value="$359.99 (8 million VND)")
         st.markdown("""
             **Function:** 1 tap, No drying function.
@@ -215,7 +215,7 @@ elif selected_page == "Products":
     # Product 2: Standard Air
     with st.container(border=True):
         st.subheader("EcoPure Standard Air")
-        st.image("https://via.placeholder.com/400x400?text=EcoPure+Standard+Air", caption="EcoPure Standard Air Model", width=250)
+        st.image("pictures/standard_air.jpg", caption="EcoPure Standard Air Model", width=250)
         st.metric(label="Price", value="$489.99 (12 million VND)")
         st.markdown("""
             **Function:** 1 tap, Drying Function included.
@@ -230,7 +230,7 @@ elif selected_page == "Products":
     # Product 3: Double
     with st.container(border=True):
         st.subheader("EcoPure Double")
-        st.image("https://via.placeholder.com/400x400?text=EcoPure+Double", caption="EcoPure Double Model", width=250)
+        st.image("pictures/double.jpg", caption="EcoPure Double Model", width=250)
         st.metric(label="Price", value="$439.99 (11 million VND)")
         st.markdown("""
             **Function:** 2 taps, No drying function.
@@ -245,7 +245,7 @@ elif selected_page == "Products":
     # Product 4: Double Air
     with st.container(border=True):
         st.subheader("EcoPure Double Air")
-        st.image("https://via.placeholder.com/400x400?text=EcoPure+Double+Air", caption="EcoPure Double Air Model", width=250)
+        st.image("pictures/double_air.png", caption="EcoPure Double Air Model", width=250)
         st.metric(label="Price", value="$589.99 (15 million VND)")
         st.markdown("""
             **Function:** 2 taps, Drying Function included.
