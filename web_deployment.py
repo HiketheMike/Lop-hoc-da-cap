@@ -265,7 +265,7 @@ elif selected_page == "Products":
     # Product 4: Double Air
     with st.container(border=True):
         st.subheader("EcoPure Double Air")
-        st.image("pictures/double_air.png", caption="EcoPure Double Air Model", width=250)
+        st.image("pictures/double_air.jpg", caption="EcoPure Double Air Model", width=250)
         st.metric(label="Price", value="$589.99 (15 million VND)")
         st.markdown("""
             **Function:** 2 taps, Drying Function included.
