@@ -22,10 +22,30 @@ def load_comments():
     else:
         # Default comments if the file doesn't exist
         return [
-            {"name": "Anna L.", "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.", "date": "2025-09-28", "rating": 5},
-            {"name": "Ben K.", "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!", "date": "2025-10-01", "rating": 4},
-            {"name": "Chloe P.", "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!", "date": "2025-10-05", "rating": 5},
-            {"name": "David M.", "comment": "Good product, does what it says. A bit pricey but worth it for the eco-friendly aspect.", "date": "2025-10-08", "rating": 4}
+ {
+        "name": "Trần Thị Linh",
+        "comment": "Ecopure is amazing! My water bottle has never been cleaner, and I love that it's eco-friendly.",
+        "date": "2025-09-28",
+        "rating": 5
+    },
+    {
+        "name": "Nguyễn Văn Bảo",
+        "comment": "Finally, a cleaner that works without harsh chemicals. Highly recommend!",
+        "date": "2025-10-01",
+        "rating": 4
+    },
+    {
+        "name": "Lê Thị Hồng",
+        "comment": "The best way to keep my reusable bottles fresh. No weird aftertaste!",
+        "date": "2025-10-05",
+        "rating": 5
+    },
+    {
+        "name": "Phạm Minh An",
+        "comment": "Good product, does what it says. A bit pricey but worth it for the eco-friendly aspect.",
+        "date": "2025-10-08",
+        "rating": 4
+    }
         ]
 
 def save_comments(comments_list):
